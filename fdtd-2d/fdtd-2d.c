@@ -103,9 +103,48 @@ void kernel_fdtd_2d(int tmax,
 #pragma endscop
 }
 
-
 int main(int argc, char** argv)
 {
+
+  if (argc == 2){
+    // ./fdtd -h   or ./fdtd -help
+    if (!strcmp(argv[1],"-h") || !strcmp(argv[1],"-help")){
+      printf("Usage: ./fdtd -d <DATASET>\n");
+      printf("Default values:\n");
+      printf("DATASET: [small, medium, large]\n");
+      printf("small = 400 iterations");
+      printf("medium = 800 iterations");
+      printf("large = 1200 iterations");
+      return 0;
+    }
+  } else if (argc == 3){
+    // ./fdtd -d <DATASET> 
+    if (!strcmp(argv[1],"-d")){
+      if (!strcmp(argv[2],"small")){
+        // NÃO TA FUNCIONANDO
+        #define SMALL_DATASET
+      } else if (!strcmp(argv[2],"medium")){
+        // NÃO TA FUNCIONANDO
+        #define MEDIUM_DATASET
+      } else if (!strcmp(argv[2],"large")){
+        // NÃO TA FUNCIONANDO
+        #define LARGE_DATASET
+      } else {
+        printf("Invalid dataset\n");
+        return 0;
+      }
+    } else {
+      printf("Invalid arguments\n");
+      return 0;
+    }
+  } else {
+    printf("Invalid arguments\n");
+    return 0;
+    
+  }
+  
+
+
   /* Retrieve problem size. */
   int tmax = TMAX;
   int nx = NX;
