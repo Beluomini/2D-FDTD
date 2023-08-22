@@ -1,43 +1,55 @@
 /**
- * template.h: This file is part of the PolyBench/C 3.2 test suite.
+ * fdtd-2d.h: This file is part of the PolyBench/C 3.2 test suite.
  *
  *
  * Contact: Louis-Noel Pouchet <pouchet@cse.ohio-state.edu>
  * Web address: http://polybench.sourceforge.net
  */
-#ifndef TEMPLATE_H
-# define TEMPLATE_H
+#ifndef FDTD_2D_H
+# define FDTD_2D_H
 
 /* Default to STANDARD_DATASET. */
 # if !defined(MINI_DATASET) && !defined(SMALL_DATASET) && !defined(LARGE_DATASET) && !defined(EXTRALARGE_DATASET)
-#  define STANDARD_DATASET
+#  define EXTRALARGE_DATASET
 # endif
 
 /* Do not define anything if the user manually defines the size. */
-# if !defined(N)
+# if !defined(NX) && ! defined(NY) && !defined(TMAX)
 /* Define the possible dataset sizes. */
 #  ifdef MINI_DATASET
-#   define N 32
+#   define TMAX 2
+#   define NX 32
+#   define NY 32
 #  endif
 
 #  ifdef SMALL_DATASET
-#   define N 128
+#   define TMAX 10
+#   define NX 500
+#   define NY 500
 #  endif
 
 #  ifdef STANDARD_DATASET /* Default if unspecified. */
-#   define N 1024
+#   define TMAX 50
+#   define NX 1000
+#   define NY 1000
 #  endif
 
 #  ifdef LARGE_DATASET
-#   define N 2000
+#   define TMAX 50
+#   define NX 2000
+#   define NY 2000
 #  endif
 
 #  ifdef EXTRALARGE_DATASET
-#   define N 4000
+#   define TMAX 400
+#   define NX 13000
+#   define NY 13000
 #  endif
 # endif /* !N */
 
-# define _PB_N POLYBENCH_LOOP_BOUND(N,n)
+# define _PB_TMAX POLYBENCH_LOOP_BOUND(TMAX,tmax)
+# define _PB_NX POLYBENCH_LOOP_BOUND(NX,nx)
+# define _PB_NY POLYBENCH_LOOP_BOUND(NY,ny)
 
 # ifndef DATA_TYPE
 #  define DATA_TYPE double
@@ -45,4 +57,4 @@
 # endif
 
 
-#endif /* !TEMPLATE */
+#endif /* !FDTD_2D */

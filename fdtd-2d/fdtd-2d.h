@@ -10,7 +10,7 @@
 
 /* Default to STANDARD_DATASET. */
 # if !defined(MINI_DATASET) && !defined(SMALL_DATASET) && !defined(LARGE_DATASET) && !defined(EXTRALARGE_DATASET)
-#  define STANDARD_DATASET
+#  define EXTRALARGE_DATASET
 # endif
 
 /* Do not define anything if the user manually defines the size. */
@@ -41,9 +41,9 @@
 #  endif
 
 #  ifdef EXTRALARGE_DATASET
-#   define TMAX 100
-#   define NX 4000
-#   define NY 4000
+#   define TMAX 400
+#   define NX 13000
+#   define NY 13000
 #  endif
 # endif /* !N */
 
