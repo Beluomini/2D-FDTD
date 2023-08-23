@@ -8,33 +8,10 @@
 #ifndef FDTD_2D_H
 # define FDTD_2D_H
 
-/* Default to STANDARD_DATASET. */
-# if !defined(SMALL_DATASET) && !defined(MEDIUM_DATASET) && !defined(LARGE_DATASET)
-#  define MEDIUM_DATASET
-# endif
-
-/* Do not define anything if the user manually defines the size. */
-# if !defined(NX) && ! defined(NY) && !defined(TMAX)
-/* Define the possible dataset sizes. */
-
-
-#  ifdef SMALL_DATASET
-#   define TMAX 400
-#   define NX 13000
-#   define NY 13000
-#  endif
-
-#  ifdef MEDIUM_DATASET /* Default if unspecified. */
-#   define TMAX 800
-#   define NX 13000
-#   define NY 13000
-#  endif
-
-#  ifdef LARGE_DATASET
-#   define TMAX 1200
-#   define NX 13000
-#   define NY 13000
-#  endif
+int TMAX;
+int NX;
+int NY;
+int NUMBER_THREADS;
 
 # endif /* !N */
 
@@ -48,4 +25,4 @@
 # endif
 
 
-#endif /* !FDTD_2D */
+// #endif /* !FDTD_2D */

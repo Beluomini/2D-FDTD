@@ -9,6 +9,7 @@
 #include <unistd.h>
 #include <string.h>
 #include <math.h>
+#include <pthread.h>
 
 
 /* Include polybench common header. */
@@ -65,6 +66,52 @@ void print_array(int nx,
   fprintf(stderr, "\n");
 }
 
+//função ṕara alocar a matriz
+void* matrix_alloc_data(int x, int y){
+  double** vec = (double**)malloc(x * sizeof(double*) * y * sizeof(double));
+  for (int i=0;i<x;i++){
+    for (int j=0;j<y;j++){
+      vec[i][j] = 0.0;
+    }
+  }
+  return vec;
+}
+
+double** ex_p;
+double** ey_p;
+double** hz_p;
+
+pthread_t* threads;
+
+void* eyParallel(void* arg){
+  int start = *(int*)arg;
+  start = NX/(NUMBER_THREADS/2) * start;
+  float sum = 0;
+  for (int t=0;t<TMAX;t++){
+    
+    for (int i=start+1 ; i<NX/(NUMBER_THREADS/2)*(start+1) ; i++){
+      for (int j=0 ; j<NY ; j++){
+        ey_p[i][j] = ey_p[i][j] - 0.5*(hz_p[i][j]-hz_p[i-1][j]);
+      }
+    }
+
+  }
+}
+
+void* exParallel(void* arg){
+  int start = *(int*)arg;
+  start = NY/(NUMBER_THREADS/2) * start;
+  float sum = 0;
+  for (int t=0;t<TMAX;t++){
+    
+    for (int i=0 ; i<NX ; i++){
+      for (int j=start+1 ; j<NY/(NUMBER_THREADS/2)*(start+1) ; j++){
+        ex_p[i][j] = ex_p[i][j] - 0.5*(hz_p[i][j]-hz_p[i][j-1]);
+      }
+    }
+
+  }
+}
 
 /* Main computational kernel. The whole function will be timed,
    including the call and return. */
@@ -81,23 +128,38 @@ void kernel_fdtd_2d(int tmax,
 
 #pragma scop
 
+  int* threads_id = malloc(NUMBER_THREADS * sizeof(int));
+
   for(t = 0; t < _PB_TMAX; t++)
     {
       for (j = 0; j < _PB_NY; j++)
 	      ey[0][j] = _fict_[t];
+      
+      for (i = 0; i < NUMBER_THREADS/2; i++){
+        threads_id[i] = i;
+        pthread_create(&threads[i], NULL, eyParallel, &threads_id[i]);
+      }
 
-      for (i = 1; i < _PB_NX; i++)
-	      for (j = 0; j < _PB_NY; j++)
-	        ey[i][j] = ey[i][j] - 0.5*(hz[i][j]-hz[i-1][j]);
+      for (i = 0; i < NUMBER_THREADS/2; i++){
+        pthread_create(&threads[i], NULL, exParallel, &threads_id[i]);
+      }
+
+      // for (i = 1; i < _PB_NX; i++)
+	    //   for (j = 0; j < _PB_NY; j++)
+	    //     ey[i][j] = ey[i][j] - 0.5*(hz[i][j]-hz[i-1][j]);
       
-      for (i = 0; i < _PB_NX; i++)
-	      for (j = 1; j < _PB_NY; j++)
-	        ex[i][j] = ex[i][j] - 0.5*(hz[i][j]-hz[i][j-1]);
+      // for (i = 0; i < _PB_NX; i++)
+	    //   for (j = 1; j < _PB_NY; j++)
+	    //     ex[i][j] = ex[i][j] - 0.5*(hz[i][j]-hz[i][j-1]);
       
+      // BARREIRA 1
       for (i = 0; i < _PB_NX - 1; i++)
 	      for (j = 0; j < _PB_NY - 1; j++)
 	        hz[i][j] = hz[i][j] - 0.7*  (ex[i][j+1] - ex[i][j] +
 				                                ey[i+1][j] - ey[i][j]);
+      // BARREIRA 2
+
+      print_array(nx, ny, ex, ey, hz);
     }
 
 #pragma endscop
@@ -117,18 +179,21 @@ int main(int argc, char** argv)
       printf("large = 1200 iterations");
       return 0;
     }
-  } else if (argc == 3){
+  } else if (argc == 5){
     // ./fdtd -d <DATASET> 
     if (!strcmp(argv[1],"-d")){
       if (!strcmp(argv[2],"small")){
-        // NÃO TA FUNCIONANDO
-        #define SMALL_DATASET
+        TMAX = 1;
+        NX = 10;
+        NY = 10;
       } else if (!strcmp(argv[2],"medium")){
-        // NÃO TA FUNCIONANDO
-        #define MEDIUM_DATASET
+        TMAX = 80;
+        NX = 13000;
+        NY = 13000;
       } else if (!strcmp(argv[2],"large")){
-        // NÃO TA FUNCIONANDO
-        #define LARGE_DATASET
+        TMAX = 1200;
+        NX = 13000;
+        NY = 13000;
       } else {
         printf("Invalid dataset\n");
         return 0;
@@ -137,31 +202,42 @@ int main(int argc, char** argv)
       printf("Invalid arguments\n");
       return 0;
     }
+
+    if(strcmp(argv[3],"-t")){
+      NUMBER_THREADS = atoi(argv[4]);
+    }else{
+      printf("Invalid arguments\n");
+      return 0;
+    }
+
   } else {
     printf("Invalid arguments\n");
     return 0;
     
   }
   
-
-
   /* Retrieve problem size. */
   int tmax = TMAX;
   int nx = NX;
   int ny = NY;
 
   /* Variable declaration/allocation. */
-  POLYBENCH_2D_ARRAY_DECL(ex,DATA_TYPE,NX,NY,nx,ny);
-  POLYBENCH_2D_ARRAY_DECL(ey,DATA_TYPE,NX,NY,nx,ny);
-  POLYBENCH_2D_ARRAY_DECL(hz,DATA_TYPE,NX,NY,nx,ny);
+  POLYBENCH_2D_ARRAY_DECL(inutil1,DATA_TYPE,NX,NY,nx,ny);
+  POLYBENCH_2D_ARRAY_DECL(inutil2,DATA_TYPE,NX,NY,nx,ny);
+  POLYBENCH_2D_ARRAY_DECL(inutil3,DATA_TYPE,NX,NY,nx,ny);
   POLYBENCH_1D_ARRAY_DECL(_fict_,DATA_TYPE,TMAX,tmax);
 
   /* Initialize array(s). */
   init_array (tmax, nx, ny,
-	      POLYBENCH_ARRAY(ex),
-	      POLYBENCH_ARRAY(ey),
-	      POLYBENCH_ARRAY(hz),
+	      POLYBENCH_ARRAY(inutil1),
+	      POLYBENCH_ARRAY(inutil2),
+	      POLYBENCH_ARRAY(inutil3),
 	      POLYBENCH_ARRAY(_fict_));
+
+  // Usar a função matrix_alloc_data para alocar as matrizes  
+  // ex_p = ex;
+  // ey_p = ey;
+  // hz_p = hz;
 
   /* Start timer. */
   polybench_start_instruments;
