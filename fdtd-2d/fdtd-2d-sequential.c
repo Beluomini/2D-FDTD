@@ -57,10 +57,10 @@ void print_array(int nx,
 
   for (i = 0; i < nx; i++)
     for (j = 0; j < ny; j++) {
-      fprintf(stderr, DATA_PRINTF_MODIFIER, ex[i][j]);
-      fprintf(stderr, DATA_PRINTF_MODIFIER, ey[i][j]);
+      // fprintf(stderr, DATA_PRINTF_MODIFIER, ex[i][j]);
+      // fprintf(stderr, DATA_PRINTF_MODIFIER, ey[i][j]);
       fprintf(stderr, DATA_PRINTF_MODIFIER, hz[i][j]);
-      if ((i * nx + j) % 20 == 0) fprintf(stderr, "\n");
+      // if ((i * nx + j) % 20 == 0) fprintf(stderr, "\n");
     }
   fprintf(stderr, "\n");
 }
@@ -83,6 +83,7 @@ void kernel_fdtd_2d(int tmax,
 
   for(t = 0; t < _PB_TMAX; t++)
     {
+      printf("t: %d\n", t);
       for (j = 0; j < _PB_NY; j++)
 	      ey[0][j] = _fict_[t];
 
@@ -123,9 +124,9 @@ int main(int argc, char** argv)
     // ./fdtd -d <DATASET> 
     if (!strcmp(argv[1],"-d")){
       if (!strcmp(argv[2],"small")){
-        TMAX = 1;
-        NX = 10;
-        NY = 10;
+        TMAX = 2;
+        NX = 5;
+        NY = 5;
       } else if (!strcmp(argv[2],"medium")){
         TMAX = 80;
         NX = 13000;
