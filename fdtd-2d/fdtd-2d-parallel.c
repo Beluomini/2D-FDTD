@@ -6,17 +6,14 @@
  * Web address: http://polybench.sourceforge.net
  */
 #include <stdio.h>
-#include <unistd.h>
+//#include <unistd.h>
 #include <string.h>
-#include <math.h>
+//#include <math.h>
 #include <pthread.h>
-
 
 /* Include polybench common header. */
 #include <polybench.h>
 
-/* Include benchmark-specific header. */
-/* Default data type is double, default size is 50x1000x1000. */
 #include "fdtd-2d.h"
 
 /* Array initialization. */
@@ -36,43 +33,25 @@ static void init_array (int tmax, int nx, int ny, double** ex, double** ey, doub
 }
 
 
-/* DCE code. Must scan the entire live-out data.
-   Can be used also to check the correctness of the output. */
-static
-void print_array(int nx,
-		 int ny,
-		 double** ex,
-     double** ey,
-     double** hz)
-{
-  int i, j;
-
-  for (i = 0; i < nx; i++)
-    for (j = 0; j < ny; j++) {
-      fprintf(stderr, DATA_PRINTF_MODIFIER, ex[i][j]);
-      fprintf(stderr, DATA_PRINTF_MODIFIER, ey[i][j]);
-      fprintf(stderr, DATA_PRINTF_MODIFIER, hz[i][j]);
-      if ((i * nx + j) % 20 == 0) fprintf(stderr, "\n");
+void print_array(double** array, int x, int y){
+    for (int i=0;i<x;i++){
+        for (int j=0;j<y;j++){
+        printf("%.2f ", array[i][j]);
+        }
+        printf("\n");
     }
-  fprintf(stderr, "\n");
 }
 
-//função ṕara alocar a matriz
+//função para alocar a matriz
 void* matrix_alloc_data(int x, int y){
 
-  // aloca um vetor de LIN ponteiros para linhas
-  double** vec = malloc (NX * sizeof (double*)) ;
+    // aloca um vetor de LIN ponteiros para linhas
+    double** vec = malloc (NX * sizeof (double*)) ;
 
-  // aloca cada uma das linhas (vetores de COL inteiros)
-  for (int i=0; i < NX; i++)
-    vec[i] = malloc (NY * sizeof (double)) ;
+    // aloca cada uma das linhas (vetores de COL inteiros)
+    for (int i=0; i < NX; i++)
+        vec[i] = malloc (NY * sizeof (double)) ;
 
-  // double** vec = (double**)malloc(x * sizeof(double*) * y * sizeof(double));
-  // for (int i=0;i<x;i++){
-  //   for (int j=0;j<y;j++){
-  //     vec[i][j] = 0.0;
-  //   }
-  // }
   return vec;
 }
 
@@ -90,14 +69,7 @@ double** ey_p;
 double** hz_p;
 double* _fict_p;
 
-void printMatrix(double** m, int x, int y){
-  for (int i=0;i<x;i++){
-    for (int j=0;j<y;j++){
-      printf("%.2f ", m[i][j]);
-    }
-    printf("\n");
-  }
-}
+
 
 pthread_t* threads;
 
@@ -127,6 +99,13 @@ void* exParallel(void* arg){
 
 }
 
+void free_matrix(double** mat, int x){
+  for (int i=0;i<x;i++){
+    free(mat[i]);
+  }
+  free(mat);
+}
+
 /* Main computational kernel. The whole function will be timed,
    including the call and return. */
 static void kernel_fdtd_2d(int tmax,
@@ -145,9 +124,9 @@ static void kernel_fdtd_2d(int tmax,
   int* threads_id = malloc(NUMBER_THREADS * sizeof(int));
   threads = malloc(NUMBER_THREADS * sizeof(pthread_t));
 
-  for(t = 0; t < _PB_TMAX; t++)
+  for(t = 0; t < TMAX; t++)
     {
-      for (j = 0; j < _PB_NY; j++)
+      for (j = 0; j < NY; j++)
 	      ey[0][j] = _fict_[t];
       
       for (i = 0; i < NUMBER_THREADS/2; i++){
@@ -173,8 +152,8 @@ static void kernel_fdtd_2d(int tmax,
 	    //     ex[i][j] = ex[i][j] - 0.5*(hz[i][j]-hz[i][j-1]);
       
       // BARREIRA 1
-      for (i = 0; i < _PB_NX - 1; i++)
-	      for (j = 0; j < _PB_NY - 1; j++)
+      for (i = 0; i < NX - 1; i++)
+	      for (j = 0; j < NY - 1; j++)
 	        hz[i][j] = hz[i][j] - 0.7*  (ex[i][j+1] - ex[i][j] +
 				                                ey[i+1][j] - ey[i][j]);
       // BARREIRA 2
@@ -183,7 +162,7 @@ static void kernel_fdtd_2d(int tmax,
     // printf("\n");
     // printMatrix(ey, NX, NY);
     // printf("\n");
-    printMatrix(hz, NX, NY);
+    print_array(hz, NX, NY);
     printf("\n\n");
       
     }
@@ -253,7 +232,7 @@ int main(int argc, char** argv)
   double** hz = matrix_alloc_data(NX, NY);
   double* _fict_ = vector_alloc_data(NY);
 
-  /* Initialize array(s). */
+  // inicializa todos os arrays cm os devidos valores iniciais
   init_array (tmax, nx, ny, ex, ey, hz, _fict_);
   
   // Usar a função matrix_alloc_data para alocar as matrizes  
@@ -273,17 +252,12 @@ int main(int argc, char** argv)
   polybench_stop_instruments;
   polybench_print_instruments;
 
-  // /* Prevent dead-code elimination. All live-out data must be printed
-  //    by the function call in argument. */
-  // polybench_prevent_dce(print_array(nx, ny, POLYBENCH_ARRAY(ex),
-	// 			    POLYBENCH_ARRAY(ey),
-	// 			    POLYBENCH_ARRAY(hz)));
 
-  /* Be clean. */
-  POLYBENCH_FREE_ARRAY(ex);
-  POLYBENCH_FREE_ARRAY(ey);
-  POLYBENCH_FREE_ARRAY(hz);
-  POLYBENCH_FREE_ARRAY(_fict_);
+    free_matrix(ex, NX);
+    free_matrix(ey, NX);
+    free_matrix(hz, NX);
+    free(_fict_);
+
 
   return 0;
 }
