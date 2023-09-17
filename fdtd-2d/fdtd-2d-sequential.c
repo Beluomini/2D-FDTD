@@ -138,9 +138,9 @@ int main(int argc, char** argv)
         NX = 6;
         NY = 6;
       } else if (!strcmp(argv[2],"medium")){
-        TMAX = 80;
-        NX = 13000;
-        NY = 13000;
+        TMAX = 5;
+        NX = 20;
+        NY = 20;
       } else if (!strcmp(argv[2],"large")){
         TMAX = 1200;
         NX = 13000;

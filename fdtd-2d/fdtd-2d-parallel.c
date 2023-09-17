@@ -1,19 +1,8 @@
-// TODO1: error when using 4+ threads. Seg fault
-// TODO2: not working when nx or ny are odd
 // TODO3: check compilation includes and libs, maybe not everything is needed
-// TODO4: maybe polish? (remove unused code, comments, etc)
-// TODO5: check if the code is correct with higher matrices and iterations
-// TODO6: maybe a auto check to see if matches with sequential?
-// TODO7: maybe a auto tester script?
-
 
 #include <stdio.h>
 #include <stdlib.h>
-// unused???
-//#include <unistd.h>
 #include <string.h>
-// unused???
-//#include <math.h>
 #include <pthread.h>
 
 // only being used for the time function
@@ -75,64 +64,59 @@ double** ey_p;
 double** hz_p;
 double* _fict_p;
 
+// threads array
 pthread_t* threads;
 
+// barrier initialization
 pthread_barrier_t barrier;
 pthread_barrierattr_t attr;
-int ret;
+
 // function used to calculate ey
 void* eyParallel(void* arg){
   int id = *(int*)arg;
+
+
   int start = NX/(NUMBER_THREADS/2) * id;
-    
-  int start_hz, end_hz;
-  start_hz = (NX/2)/(NUMBER_THREADS/2)*id;
-  end_hz = (NX/2)/(NUMBER_THREADS/2)*(id+1);
-  if (id == NUMBER_THREADS/2){
-    end_hz = NX/2;
+  if (id == 0){
+    start += 1;
   }
-  printf("Thread ey(%d), start:%d, next:%d, start_hz: %d, end_hz: %d\n", id, start, NX/(NUMBER_THREADS/2) * (id+1), start_hz, end_hz);
+
+  printf("thread %d ey working from %d to %d\n", 
+  id, start, NY/(NUMBER_THREADS/2)*(id+1));
+
 
   for (int t=0 ; t<TMAX ; t++){
-
-    
-
-
     for (int f = 0; f < NY; f++)
 	      ey_p[0][f] = _fict_p[t];
     
-    //printf("%d, %d\n", start+1, NX/(NUMBER_THREADS/2)*(start+1));
-
-    for (int i=start+1 ; i<NX/(NUMBER_THREADS/2)*(id+1) ; i++){
+    // i = NX/(NUMBER_THREADS/2) * id + 1;
+    // i < NX/(NUMBER_THREADS/2)*(id+1)
+    // i++
+    // TODO: the +1 at the start here is because we dont start at 0, but at 1
+    // so for the other threads we need to start at the next line not jump 1 extra
+    for (int i=start ; i<NX/(NUMBER_THREADS/2)*(id+1) ; i++){
       for (int j=0 ; j<NY ; j++){
-        //printf("ey[%d][%d] = %f\n, hz_p = %f, hz_p = %f", i, j, ey_p[i][j], hz_p[i][j], hz_p[i-1][j]);
         ey_p[i][j] = ey_p[i][j] - 0.5*(hz_p[i][j]-hz_p[i-1][j]);
-        //printf("ey[%d][%d] = %f\n", i, j, ey_p[i][j]);
       }
     }
-    //printf("finished ey\n");
-    //printf("pre barrier y\n");
 
-    // BARRIER 1 HERE
     pthread_barrier_wait(&barrier);
 
+    printf("thread %d ey working at hz from %d to %d\n",
+    id, (NX/2)/(NUMBER_THREADS/2)*id, (NX/2)/(NUMBER_THREADS/2)*(id+1));
+
     // CALCULATE HALF HZ (0,0 -> nx/2,ny/2)
-    
-    // TODO: check if this is correct
-    // hz not matching with sequential code
-    // ex and ey is right, but hz is incorret everytime in the line 2 
-    //printf("starting hz (ey)\n");
+    int end_hz = (NX/2)/(NUMBER_THREADS/2)*(id+1);
+    if (id == NUMBER_THREADS/2 - 1){
+      end_hz = NX/2;
+    }
     // here we dont have "i < end_hz-1" <-- this is because -1 is only is the last
     // line, not in the middle
-
-    for (int i= start_hz; i< end_hz; i++){
+    for (int i= (NX/2)/(NUMBER_THREADS/2)*id; i< end_hz; i++){
       for (int j=0 ; j<NY-1 ; j++){
-        printf("hz_p[%d][%d] = %f\n", i, j, hz_p[i][j]);
         hz_p[i][j] = hz_p[i][j] - 0.7*(ex_p[i][j+1] - ex_p[i][j] + ey_p[i+1][j] - ey_p[i][j]);
       }
     }
-    //printf("pre barrier2 y\n");
-    // BARRIER 2 HERE
     pthread_barrier_wait(&barrier);
   }
 
@@ -141,47 +125,42 @@ void* eyParallel(void* arg){
 // function used to calculate ex
 void* exParallel(void* arg){
   int id = *(int*)arg;
+
+
   int start = NY/(NUMBER_THREADS/2) * id;
-  float sum = 0;
-
-  int start_hz, end_hz;
-  start_hz = (NX/2)/(NUMBER_THREADS/2)*id + (NX/2);
-  end_hz = (NX/2)/(NUMBER_THREADS/2)*(id+1) + (NX/2);
-  if (id == NUMBER_THREADS/2){
-    end_hz = NX;
+  if (id == 0){
+    start += 1;
   }
-
-    
-  printf("Thread ex(%d), start:%d, next:%d, start_hz: %d, end_hz: %d\n", id, start, NX/(NUMBER_THREADS/2) * (id+1), start_hz, end_hz);
+  printf("thread %d ex working from %d to %d\n", 
+  id, start, NY/(NUMBER_THREADS/2)*(id+1));
 
 
   for (int t=0 ; t<TMAX ; t++){
-    
-  
     for (int i=0 ; i<NX ; i++){
-      for (int j=start+1 ; j<NY/(NUMBER_THREADS/2)*(id+1) ; j++){
-        //printf("ex[%d][%d] = %f, hz_p = %f, hz_p = %f\n", i, j, ex_p[i][j], hz_p[i][j], hz_p[i][j-1]);
+      // TODO: the +1 at the start here is because we dont start at 0, but at 1
+      // so for the other threads we need to start at the next line not jump 1 extra
+      for (int j= start ; j<NY/(NUMBER_THREADS/2)*(id+1) ; j++){
         ex_p[i][j] = ex_p[i][j] - 0.5*(hz_p[i][j]-hz_p[i][j-1]);
-        //printf("after ex[%d][%d] = %f\n", i, j, ex_p[i][j]);
       }
     }
-    //printf("finished ex\n");
-    //printf("pre barrier x\n");
-    // BARRIER 1 HERE
     pthread_barrier_wait(&barrier);
 
+    printf("thread %d ex working at hz from %d to %d\n",
+    id, (NX/2)/(NUMBER_THREADS/2)*id + (NX/2), (NX/2)/(NUMBER_THREADS/2)*(id+1) + (NX/2));
+
+    int end_hz = (NX/2)/(NUMBER_THREADS/2)*(id+1) + (NX/2);
+    if (id == NUMBER_THREADS/2 - 1){
+      end_hz = NX-1;
+    }
     // CALCULATE HALF HZ (nx/2,ny/2 -> nx,ny)
-    //printf("starting hz (ex)\n");
-    for (int i= start_hz; i< end_hz-1; i++){
+    // here we have i < end_hz-1 because we dont need to caculate the last line
+    // also we have the same issue as the for above, only the last line has -1
+    // not all threads
+    for (int i= (NX/2)/(NUMBER_THREADS/2)*id + (NX/2); i< end_hz; i++){
       for (int j=0 ; j<NY-1 ; j++){
-        //printf("ex[%d][%d] = %f\n", i, j, ex_p[i][j]);
-        //printf("hz_p = %f, hz_p = %f\n", hz_p[i][j], hz_p[i][j-1]);
-        printf("hz_p[%d][%d] = %f\n", i, j, hz_p[i][j]);
         hz_p[i][j] = hz_p[i][j] - 0.7*(ex_p[i][j+1] - ex_p[i][j] + ey_p[i+1][j] - ey_p[i][j]);
       }
     }
-    //printf("pre barrier2 x\n");
-    // BARRIER 2 HERE
     pthread_barrier_wait(&barrier);
 
   }  
@@ -212,47 +191,27 @@ static void kernel_fdtd_2d(int tmax,
   int* threads_id = malloc(NUMBER_THREADS * sizeof(int));
   threads = malloc(NUMBER_THREADS * sizeof(pthread_t));
   
+  for (i = 0; i < NUMBER_THREADS/2; i++){
+    threads_id[i] = i;
+    pthread_create(&threads[i], NULL, eyParallel, &threads_id[i]);
+  }
 
-  // remove this loop, need to be inside ex, ey parallel code
-  //for(t = 0; t < TMAX; t++)
-  //  {
-      // remove this loop, put inside ey parallel code
-      //for (j = 0; j < NY; j++)
-	    //  ey[0][j] = _fict_[t];
-      
-      // this loop is right being here, i think
-      for (i = 0; i < NUMBER_THREADS/2; i++){
-        threads_id[i] = i;
-        pthread_create(&threads[i], NULL, eyParallel, &threads_id[i]);
-      }
+  for (i = 0; i < NUMBER_THREADS/2; i++){
+    pthread_create(&threads[i+(NUMBER_THREADS/2)], NULL, exParallel, &threads_id[i]);
+  }
 
-      // also this one
-      for (i = 0; i < NUMBER_THREADS/2; i++){
-        pthread_create(&threads[i+(NUMBER_THREADS/2)], NULL, exParallel, &threads_id[i]);
-      }
-
-    // here we have the first barrier, but inside both ex and ey threads
-    // after all threads stop here, they should start calculating hz, then 
-    // another barrier is placed, and then they calculate ex and ey again
-      
-    for (i = 0; i < NUMBER_THREADS; i++){ // -> so this join should be removed  
-      pthread_join(threads[i], NULL);
-    }
     
-      // BARREIRA 1
-    //  for (i = 0; i < NX - 1; i++)   // -> this should also be inside ex and ey
-	  //    for (j = 0; j < NY - 1; j++) // and divide the task in half 
-	  //      hz[i][j] = hz[i][j] - 0.7*  (ex[i][j+1] - ex[i][j] +
-		//		                                ey[i+1][j] - ey[i][j]);
-      // BARREIRA 2
-    print_array(ex, NX, NY);
-    printf("\n\n");
-    print_array(ey, NX, NY);
-    printf("\n\n");
-    print_array(hz, NX, NY);
-    printf("\n\n");
-      
-  //  }
+  for (i = 0; i < NUMBER_THREADS; i++){ 
+    pthread_join(threads[i], NULL);
+  }
+  printf("ex\n");
+  print_array(ex, NX, NY);
+  printf("\ney\n");
+  print_array(ey, NX, NY);
+  printf("\nhz\n");
+  print_array(hz, NX, NY);
+  printf("\n\n");
+    
 
 #pragma endscop
 }
@@ -271,17 +230,18 @@ int main(int argc, char** argv)
       printf("large = 1200 iterations");
       return 0;
     }
+    // ./fdtd -d <DATASET> -t <NUMBER_THREADS>
   } else if (argc == 5){
-    // ./fdtd -d <DATASET> 
+    // <DATASET> 
     if (!strcmp(argv[1],"-d")){
       if (!strcmp(argv[2],"small")){
-        TMAX = 3;
+        TMAX = 1;
         NX = 6;
         NY = 6;
       } else if (!strcmp(argv[2],"medium")){
-        TMAX = 80;
-        NX = 13000;
-        NY = 13000;
+        TMAX = 5;
+        NX = 20;
+        NY = 20;
       } else if (!strcmp(argv[2],"large")){
         TMAX = 1200;
         NX = 13000;
@@ -294,8 +254,12 @@ int main(int argc, char** argv)
       printf("Invalid arguments\n");
       return 0;
     }
-
+    // -t <NUMBER_THREADS>
     if(!strcmp(argv[3],"-t")){
+      if (atoi(argv[4]) <= 0){
+        printf("Invalid number of threads\n");
+        return 0;
+      }
       NUMBER_THREADS = atoi(argv[4]);
     }else{
       printf("Invalid arguments\n");
@@ -320,7 +284,7 @@ int main(int argc, char** argv)
   double* _fict_ = vector_alloc_data(NY);
 
   // initialize barrier
-  ret = pthread_barrier_init(&barrier, &attr, NUMBER_THREADS);
+  pthread_barrier_init(&barrier, &attr, NUMBER_THREADS);
 
 
   // inicializa todos os arrays cm os devidos valores iniciais
