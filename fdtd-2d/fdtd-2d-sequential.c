@@ -1,10 +1,7 @@
-/**
- * fdtd-2d.c: This file is part of the PolyBench/C 3.2 test suite.
- *
- *
- * Contact: Louis-Noel Pouchet <pouchet@cse.ohio-state.edu>
- * Web address: http://polybench.sourceforge.net
- */
+// TODO1: polish this
+// TODO2: check for compilation includes and libs
+
+
 #include <stdio.h>
 #include <string.h>
 #include <pthread.h>

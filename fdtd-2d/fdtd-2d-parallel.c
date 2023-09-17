@@ -1,5 +1,11 @@
-// TODO: error when using 4 threads. Seg fault
-// TODO: not working when nx or ny are odd
+// TODO1: error when using 4+ threads. Seg fault
+// TODO2: not working when nx or ny are odd
+// TODO3: check compilation includes and libs, maybe not everything is needed
+// TODO4: maybe polish? (remove unused code, comments, etc)
+// TODO5: check if the code is correct with higher matrices and iterations
+// TODO6: maybe a auto check to see if matches with sequential?
+// TODO7: maybe a auto tester script?
+
 
 #include <stdio.h>
 #include <stdlib.h>
