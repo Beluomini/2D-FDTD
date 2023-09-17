@@ -104,7 +104,7 @@ void* eyParallel(void* arg){
         //printf("ey[%d][%d] = %f\n", i, j, ey_p[i][j]);
       }
     }
-
+    //printf("finished ey\n");
     //printf("pre barrier y\n");
 
     // BARRIER 1 HERE
@@ -112,10 +112,16 @@ void* eyParallel(void* arg){
 
     // CALCULATE HALF HZ (0,0 -> nx/2,ny/2)
     
+    // TODO: check if this is correct
+    // hz not matching with sequential code
+    // ex and ey is right, but hz is incorret everytime in the line 2 
+    //printf("starting hz (ey)\n");
+    // here we dont have "i < end_hz-1" <-- this is because -1 is only is the last
+    // line, not in the middle
 
-
-    for (int i= start_hz; i< end_hz-1; i++){
+    for (int i= start_hz; i< end_hz; i++){
       for (int j=0 ; j<NY-1 ; j++){
+        printf("hz_p[%d][%d] = %f\n", i, j, hz_p[i][j]);
         hz_p[i][j] = hz_p[i][j] - 0.7*(ex_p[i][j+1] - ex_p[i][j] + ey_p[i+1][j] - ey_p[i][j]);
       }
     }
@@ -153,16 +159,18 @@ void* exParallel(void* arg){
         //printf("after ex[%d][%d] = %f\n", i, j, ex_p[i][j]);
       }
     }
+    //printf("finished ex\n");
     //printf("pre barrier x\n");
     // BARRIER 1 HERE
     pthread_barrier_wait(&barrier);
 
     // CALCULATE HALF HZ (nx/2,ny/2 -> nx,ny)
-
+    //printf("starting hz (ex)\n");
     for (int i= start_hz; i< end_hz-1; i++){
       for (int j=0 ; j<NY-1 ; j++){
         //printf("ex[%d][%d] = %f\n", i, j, ex_p[i][j]);
         //printf("hz_p = %f, hz_p = %f\n", hz_p[i][j], hz_p[i][j-1]);
+        printf("hz_p[%d][%d] = %f\n", i, j, hz_p[i][j]);
         hz_p[i][j] = hz_p[i][j] - 0.7*(ex_p[i][j+1] - ex_p[i][j] + ey_p[i+1][j] - ey_p[i][j]);
       }
     }
@@ -231,7 +239,10 @@ static void kernel_fdtd_2d(int tmax,
 	  //      hz[i][j] = hz[i][j] - 0.7*  (ex[i][j+1] - ex[i][j] +
 		//		                                ey[i+1][j] - ey[i][j]);
       // BARREIRA 2
-
+    print_array(ex, NX, NY);
+    printf("\n\n");
+    print_array(ey, NX, NY);
+    printf("\n\n");
     print_array(hz, NX, NY);
     printf("\n\n");
       
@@ -258,7 +269,7 @@ int main(int argc, char** argv)
     // ./fdtd -d <DATASET> 
     if (!strcmp(argv[1],"-d")){
       if (!strcmp(argv[2],"small")){
-        TMAX = 1;
+        TMAX = 3;
         NX = 6;
         NY = 6;
       } else if (!strcmp(argv[2],"medium")){

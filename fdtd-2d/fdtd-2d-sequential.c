@@ -19,14 +19,14 @@ static void init_array (int tmax, int nx, int ny, double** ex, double** ey, doub
   int i, j;
 
   for (i = 0; i < tmax; i++)
-    _fict_[i] = (DATA_TYPE) i;
+    _fict_[i] = (double) i;
   
   for (i = 0; i < nx; i++)
     for (j = 0; j < ny; j++)
       {
-        ex[i][j] = ((DATA_TYPE) i*(j+1)) / nx;
-        ey[i][j] = ((DATA_TYPE) i*(j+2)) / ny;
-        hz[i][j] = ((DATA_TYPE) i*(j+3)) / nx;
+        ex[i][j] = ((double) i*(j+1)) / nx;
+        ey[i][j] = ((double) i*(j+2)) / ny;
+        hz[i][j] = ((double) i*(j+3)) / nx;
       }
 }
 
@@ -109,6 +109,10 @@ void kernel_fdtd_2d(int tmax,
 	        hz[i][j] = hz[i][j] - 0.7*  (ex[i][j+1] - ex[i][j] +
 				                                ey[i+1][j] - ey[i][j]);
 
+      //print_array(ex, NX, NY);
+      //printf("\n\n");
+      //print_array(ey, NX, NY);
+      //printf("\n\n");
       print_array(hz, NX, NY);
     }
 
@@ -133,7 +137,7 @@ int main(int argc, char** argv)
     // ./fdtd -d <DATASET> 
     if (!strcmp(argv[1],"-d")){
       if (!strcmp(argv[2],"small")){
-        TMAX = 2;
+        TMAX = 3;
         NX = 6;
         NY = 6;
       } else if (!strcmp(argv[2],"medium")){
