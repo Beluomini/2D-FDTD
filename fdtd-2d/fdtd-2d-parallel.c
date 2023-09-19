@@ -81,8 +81,7 @@ void* eyParallel(void* arg){
     start += 1;
   }
 
-  printf("thread %d ey working from %d to %d\n", 
-  id, start, NY/(NUMBER_THREADS/2)*(id+1));
+  //printf("thread %d ey working from %d to %d\n", id, start, NY/(NUMBER_THREADS/2)*(id+1));
 
 
   for (int t=0 ; t<TMAX ; t++){
@@ -102,8 +101,7 @@ void* eyParallel(void* arg){
 
     pthread_barrier_wait(&barrier);
 
-    printf("thread %d ey working at hz from %d to %d\n",
-    id, (NX/2)/(NUMBER_THREADS/2)*id, (NX/2)/(NUMBER_THREADS/2)*(id+1));
+    //printf("thread %d ey working at hz from %d to %d\n", id, (NX/2)/(NUMBER_THREADS/2)*id, (NX/2)/(NUMBER_THREADS/2)*(id+1));
 
     // CALCULATE HALF HZ (0,0 -> nx/2,ny/2)
     int end_hz = (NX/2)/(NUMBER_THREADS/2)*(id+1);
@@ -131,8 +129,7 @@ void* exParallel(void* arg){
   if (id == 0){
     start += 1;
   }
-  printf("thread %d ex working from %d to %d\n", 
-  id, start, NY/(NUMBER_THREADS/2)*(id+1));
+  //printf("thread %d ex working from %d to %d\n", id, start, NY/(NUMBER_THREADS/2)*(id+1));
 
 
   for (int t=0 ; t<TMAX ; t++){
@@ -145,8 +142,7 @@ void* exParallel(void* arg){
     }
     pthread_barrier_wait(&barrier);
 
-    printf("thread %d ex working at hz from %d to %d\n",
-    id, (NX/2)/(NUMBER_THREADS/2)*id + (NX/2), (NX/2)/(NUMBER_THREADS/2)*(id+1) + (NX/2));
+    //printf("thread %d ex working at hz from %d to %d\n", id, (NX/2)/(NUMBER_THREADS/2)*id + (NX/2), (NX/2)/(NUMBER_THREADS/2)*(id+1) + (NX/2));
 
     int end_hz = (NX/2)/(NUMBER_THREADS/2)*(id+1) + (NX/2);
     if (id == NUMBER_THREADS/2 - 1){
@@ -204,13 +200,13 @@ static void kernel_fdtd_2d(int tmax,
   for (i = 0; i < NUMBER_THREADS; i++){ 
     pthread_join(threads[i], NULL);
   }
-  printf("ex\n");
-  print_array(ex, NX, NY);
-  printf("\ney\n");
-  print_array(ey, NX, NY);
-  printf("\nhz\n");
-  print_array(hz, NX, NY);
-  printf("\n\n");
+  //printf("ex\n");
+  //print_array(ex, NX, NY);
+  //printf("\ney\n");
+  //print_array(ey, NX, NY);
+  //printf("\nhz\n");
+  //print_array(hz, NX, NY);
+  //printf("\n\n");
     
 
 #pragma endscop
@@ -235,17 +231,17 @@ int main(int argc, char** argv)
     // <DATASET> 
     if (!strcmp(argv[1],"-d")){
       if (!strcmp(argv[2],"small")){
-        TMAX = 1;
-        NX = 6;
-        NY = 6;
+        TMAX = 2;
+        NX = 100;
+        NY = 100;
       } else if (!strcmp(argv[2],"medium")){
         TMAX = 5;
-        NX = 20;
-        NY = 20;
+        NX = 100;
+        NY = 100;
       } else if (!strcmp(argv[2],"large")){
-        TMAX = 1200;
-        NX = 13000;
-        NY = 13000;
+        TMAX = 10;
+        NX = 100;
+        NY = 100;
       } else {
         printf("Invalid dataset\n");
         return 0;

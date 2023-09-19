@@ -89,7 +89,7 @@ void kernel_fdtd_2d(int tmax,
 
   for(t = 0; t < TMAX; t++)
     {
-      printf("t: %d\n", t);
+      // printf("t: %d\n", t);
       for (j = 0; j < NY; j++)
 	      ey[0][j] = _fict_[t];
 
@@ -110,7 +110,7 @@ void kernel_fdtd_2d(int tmax,
       //printf("\n\n");
       //print_array(ey, NX, NY);
       //printf("\n\n");
-      print_array(hz, NX, NY);
+      //print_array(hz, NX, NY);
     }
 
 #pragma endscop
@@ -134,17 +134,17 @@ int main(int argc, char** argv)
     // ./fdtd -d <DATASET> 
     if (!strcmp(argv[1],"-d")){
       if (!strcmp(argv[2],"small")){
-        TMAX = 3;
-        NX = 6;
-        NY = 6;
+        TMAX = 2;
+        NX = 100;
+        NY = 100;
       } else if (!strcmp(argv[2],"medium")){
         TMAX = 5;
-        NX = 20;
-        NY = 20;
+        NX = 100; 
+        NY = 100;
       } else if (!strcmp(argv[2],"large")){
-        TMAX = 1200;
-        NX = 13000;
-        NY = 13000;
+        TMAX = 10;
+        NX = 100;
+        NY = 100;
       } else {
         printf("Invalid dataset\n");
         return 0;
