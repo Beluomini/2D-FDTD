@@ -26,7 +26,21 @@ static void init_array (int tmax, int nx, int ny, double** ex, double** ey, doub
       }
 }
 
+// matrices and array initialization
+static void init_array (int tmax, int nx, int ny, double** ex, double** ey, double** hz, double* _fict_) {
+  int i, j;
 
+  for (i = 0; i < tmax; i++)
+    _fict_[i] = (double) i;
+  
+  for (i = 0; i < nx; i++)
+    for (j = 0; j < ny; j++)
+      {
+        ex[i][j] = ((double) i*(j+1)) / nx;
+        ey[i][j] = ((double) i*(j+2)) / ny;
+        hz[i][j] = ((double) i*(j+3)) / nx;
+      }
+}
 void print_array(double** array, int x, int y){
     for (int i=0;i<x;i++){
         for (int j=0;j<y;j++){
