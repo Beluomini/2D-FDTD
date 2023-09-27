@@ -208,6 +208,50 @@ int main(int argc, char** argv) {
           }
         }
 
+        for (int i = 1; i < size_Of_Cluster; i++){
+
+          if(i < size_Of_Cluster/2){
+
+          
+            MPI_Recv(&start, 1, MPI_INT, i, 1, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+            printf("Message Received from %d to %d: %d\n", i, 0, start);
+
+            MPI_Recv(&end, 1, MPI_INT, i, 1, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+            printf("Message Received from %d to %d: %d\n", i, 0, end);
+
+            MPI_Recv(&ey[start][0], (end-start) * NX, MPI_INT, i, 1, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+            printf("Message Received from %d to %d: %f\n", i, 0, ey[start][0]);
+
+            MPI_Recv(&hz[start][0], (end-start) * NX, MPI_INT, i, 1, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+            printf("Message Received from %d to %d: %f\n", i, 0, hz[start][0]);            
+
+          }else{
+
+            MPI_Recv(&start, 1, MPI_INT, i, 1, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+            printf("Message Received from %d to %d: %d\n", i, 0, start);
+
+            MPI_Recv(&end, 1, MPI_INT, i, 1, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+            printf("Message Received from %d to %d: %d\n", i, 0, end);
+
+            MPI_Recv(&ex[start][0], (end-start) * NX, MPI_INT, i, 1, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+            printf("Message Received from %d to %d: %f\n", i, 0, ex[start][0]);
+
+            MPI_Recv(&hz[start][0], (end-start) * NX, MPI_INT, i, 1, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+            printf("Message Received from %d to %d: %f\n", i, 0, hz[start][0]);
+
+          }
+
+        }
+
+        MPI_Barrier(MPI_COMM_WORLD);
+
+        print_array(ey, NX, NY);
+        printf("\n---------------------\n");
+        print_array(ex, NX, NY);
+        printf("\n---------------------\n");
+        print_array(hz, NX, NY);
+        printf("\nsize of cluster: %d\n", size_Of_Cluster);
+
       }
 
       //stop timer and print results
@@ -229,38 +273,52 @@ int main(int argc, char** argv) {
         if(process_Rank < size_Of_Cluster/2){
 
           MPI_Recv(&start, 1, MPI_INT, 0, 1, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
-          printf("Message Receivid from %d to %d with start %d\n", 0, id, start);
+          printf("Message Receivid from %d to %d with start %d\n", 0, process_Rank, start);
 
           MPI_Recv(&end, 1, MPI_INT, 0, 1, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
-          printf("Message Received: %d\n", end);
+          printf("Message Receivid from %d to %d with start %d\n", 0, process_Rank, end);
 
           MPI_Recv(&ey, (end-start) * NX, MPI_INT, 0, 1, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
-          printf("Message Received: %d\n", message_Item);
+          printf("Message Receivid from %d to %d with start %f\n", 0, process_Rank, ey[0][0]);
 
           MPI_Recv(&hz, (end-start) * NX, MPI_INT, 0, 1, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
-          printf("Message Received: %d\n", message_Item);
+          printf("Message Receivid from %d to %d with start %f\n", 0, process_Rank, hz[0][0]);
 
           for (int i=start ; i<end ; i++){
             for (int j=0 ; j<NY ; j++){
               ey[i][j] = ey[i][j] - 0.5*(hz[i][j]-hz[i-1][j]);
             }
           }
+              
+          MPI_Send(&start, 1, MPI_INT, 0, 1, MPI_COMM_WORLD);
+          printf("Message Sent from %d to %d with start %d\n", process_Rank, 0, start);
 
-          // Barreira
+          MPI_Send(&end, 1, MPI_INT, 0, 1, MPI_COMM_WORLD);
+          printf("Message Sent from %d to %d with end %d\n", process_Rank, 0, end);
+
+          MPI_Send(&ey[start][0], (end-start) * NX, MPI_INT, 0, 1, MPI_COMM_WORLD);
+          printf("Message Sent from %d to %d with end %f\n", process_Rank, 0, ey[start][0]);
+          printf("end - start = %d\n", (end-start)*NX);
+
+          MPI_Send(&hz[start][0], (end-start) * NX, MPI_INT, 0, 1, MPI_COMM_WORLD);
+          printf("Message Sent from %d to %d with end %f\n", process_Rank, 0, hz[start][0]);
+
+          MPI_Barrier(MPI_COMM_WORLD);
+
 
         }else{
 
           MPI_Recv(&start, 1, MPI_INT, 0, 1, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
-          printf("Message Received: %d\n", message_Item);
+          printf("Message Receivid from %d to %d with start %d\n", 0, process_Rank, start);
 
           MPI_Recv(&end, 1, MPI_INT, 0, 1, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
-          printf("Message Received: %d\n", message_Item);
+          printf("Message Receivid from %d to %d with start %d\n", 0, process_Rank, end);
 
           MPI_Recv(&ex, (end-start) * NX, MPI_INT, 0, 1, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
-          printf("Message Received: %d\n", message_Item);
+          printf("Message Receivid from %d to %d with start %f\n", 0, process_Rank, ex[0][0]);
 
           MPI_Recv(&hz, (end-start) * NX, MPI_INT, 0, 1, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
-          printf("Message Received: %d\n", message_Item);
+          printf("Message Receivid from %d to %d with start %f\n", 0, process_Rank, hz[0][0]);
 
           for (int i=0 ; i<NX ; i++){
             for (int j= start ; end ; j++){
@@ -268,7 +326,22 @@ int main(int argc, char** argv) {
             }
           }
 
-          // Barreira
+          
+          MPI_Send(&start, 1, MPI_INT, 0, 1, MPI_COMM_WORLD);
+          printf("Message Sent from %d to %d with start %d\n", process_Rank, 0, start);
+
+          MPI_Send(&end, 1, MPI_INT, 0, 1, MPI_COMM_WORLD);
+          printf("Message Sent from %d to %d with end %d\n", process_Rank, 0, end);
+
+          MPI_Send(&ex[start][0], (end-start) * NX, MPI_INT, 0, 1, MPI_COMM_WORLD);
+          printf("Message Sent from %d to %d with end %f\n", process_Rank, 0, ex[start][0]);
+          printf("end - start = %d\n", (end-start)*NX);
+
+          MPI_Send(&hz[start][0], (end-start) * NX, MPI_INT, 0, 1, MPI_COMM_WORLD);
+          printf("Message Sent from %d to %d with end %f\n", process_Rank, 0, hz[start][0]);
+
+
+          MPI_Barrier(MPI_COMM_WORLD);
           
         }
 
