@@ -89,8 +89,6 @@ void* eyParallel(void* arg){
     // i = NX/(NUMBER_THREADS/2) * id + 1;
     // i < NX/(NUMBER_THREADS/2)*(id+1)
     // i++
-    // TODO: the +1 at the start here is because we dont start at 0, but at 1
-    // so for the other threads we need to start at the next line not jump 1 extra
     for (int i=start ; i<NX/(NUMBER_THREADS/2)*(id+1) ; i++){
       for (int j=0 ; j<NY ; j++){
         ey_p[i][j] = ey_p[i][j] - 0.5*(hz_p[i][j]-hz_p[i-1][j]);
@@ -99,7 +97,6 @@ void* eyParallel(void* arg){
 
     pthread_barrier_wait(&barrier);
 
-    //printf("thread %d ey working at hz from %d to %d\n", id, (NX/2)/(NUMBER_THREADS/2)*id, (NX/2)/(NUMBER_THREADS/2)*(id+1));
 
     // CALCULATE HALF HZ (0,0 -> nx/2,ny/2)
     int end_hz = (NX/2)/(NUMBER_THREADS/2)*(id+1);
@@ -127,20 +124,14 @@ void* exParallel(void* arg){
   if (id == 0){
     start += 1;
   }
-  //printf("thread %d ex working from %d to %d\n", id, start, NY/(NUMBER_THREADS/2)*(id+1));
-
 
   for (int t=0 ; t<TMAX ; t++){
     for (int i=0 ; i<NX ; i++){
-      // TODO: the +1 at the start here is because we dont start at 0, but at 1
-      // so for the other threads we need to start at the next line not jump 1 extra
       for (int j= start ; j<NY/(NUMBER_THREADS/2)*(id+1) ; j++){
         ex_p[i][j] = ex_p[i][j] - 0.5*(hz_p[i][j]-hz_p[i][j-1]);
       }
     }
     pthread_barrier_wait(&barrier);
-
-    //printf("thread %d ex working at hz from %d to %d\n", id, (NX/2)/(NUMBER_THREADS/2)*id + (NX/2), (NX/2)/(NUMBER_THREADS/2)*(id+1) + (NX/2));
 
     int end_hz = (NX/2)/(NUMBER_THREADS/2)*(id+1) + (NX/2);
     if (id == NUMBER_THREADS/2 - 1){
