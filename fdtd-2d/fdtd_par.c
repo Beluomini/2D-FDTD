@@ -112,7 +112,7 @@ void* eyParallel(void* arg){
     }
     pthread_barrier_wait(&barrier);
   }
-
+  return 0;
 }
 
 // function used to calculate ex
@@ -149,7 +149,7 @@ void* exParallel(void* arg){
     pthread_barrier_wait(&barrier);
 
   }  
-
+  return 0;
 }
 
 void free_matrix(double** mat, int x){
@@ -169,9 +169,7 @@ static void kernel_fdtd_2d(int tmax,
         double * _fict_)
 {
 
-  int t, i, j;
-
-#pragma scop
+  int i;
 
   int* threads_id = malloc(NUMBER_THREADS * sizeof(int));
   threads = malloc(NUMBER_THREADS * sizeof(pthread_t));
@@ -196,9 +194,7 @@ static void kernel_fdtd_2d(int tmax,
   //printf("\nhz\n");
   //print_array(hz, NX, NY);
   //printf("\n\n");
-    
 
-#pragma endscop
 }
 
 int main(int argc, char** argv)

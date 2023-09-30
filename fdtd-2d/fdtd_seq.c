@@ -134,9 +134,9 @@ int main(int argc, char** argv)
     // ./fdtd -d <DATASET> 
     if (!strcmp(argv[1],"-d")){
       if (!strcmp(argv[2],"small")){
-        TMAX = 2;
-        NX = 100;
-        NY = 100;
+        TMAX = 1;
+        NX = 8;
+        NY = 8;
       } else if (!strcmp(argv[2],"medium")){
         TMAX = 5;
         NX = 100; 
@@ -186,6 +186,7 @@ int main(int argc, char** argv)
   /* Run kernel. */
   kernel_fdtd_2d (tmax, nx, ny, ex, ey, hz, _fict_);
 
+  print_array(ey, NX, NY);
 
   /* Stop and print timer. */
   polybench_stop_instruments;
