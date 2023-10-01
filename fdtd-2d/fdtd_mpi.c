@@ -119,9 +119,6 @@ int main(int argc, char** argv) {
     MPI_Comm_size(MPI_COMM_WORLD, &size_Of_Cluster);
     MPI_Comm_rank(MPI_COMM_WORLD, &process_Rank);
     
-    printf("aa\n");
-    printf("process %d\n", process_Rank);
-
     double* ex;
     double* ey;
     double* hz;
@@ -137,16 +134,16 @@ int main(int argc, char** argv) {
       // Inicializa as matrizes e o vetor
       init_array (tmax, nx, ny, ex, ey, hz, _fict_);
 
+      printf("\n---------EX----------\n");
       print_array(ey, NX, NY);
-      printf("\n---------------------\n");
+      printf("\n---------EY----------\n");
       print_array(ex, NX, NY);
-      printf("\n---------------------\n");
+      printf("\n---------HZ----------\n");
       print_array(hz, NX, NY);
       printf("\nsize of cluster: %d\n\n", size_Of_Cluster);
 
     }
     // TODO7?: apenas o 0 esta passando, seg fault nos outros
-    printf("Processo %d passou aq\n", process_Rank);
 
     // ideia de logica para mpi:
     // scatter de ambos ex e ey para todos os processos
@@ -176,6 +173,7 @@ int main(int argc, char** argv) {
     double *scattered_Data_ex = (double*)malloc(NX * (NY/size_Of_Cluster) * sizeof(double));
     double *scattered_Data_hz = (double*)malloc(NX * (NY/size_Of_Cluster) * sizeof(double));
     double *extra_ey =          (double*)malloc(NX * sizeof(double));
+    double *extra_hz =          (double*)malloc(NX * sizeof(double));
 
     int start = 0;
     int end = NY/size_Of_Cluster;
@@ -192,6 +190,42 @@ int main(int argc, char** argv) {
     printf("processo %d recebeu 1 elemento %f e ultimo elemento %f  (ex)\n", process_Rank, scattered_Data_ex[0], scattered_Data_ex[last-1]);
     printf("processo %d recebeu 1 elemento %f e ultimo elemento %f  (hz)\n", process_Rank, scattered_Data_hz[0], scattered_Data_hz[last-1]);
 
+    // calculo para ey
+
+    // 00 01 02 03 04 05 06 07  <- definido por _fict_
+    // 10 11 12 13 14 15 16 17         da linha  1 ate Y
+    // 20 21 22 23 24 25 26 27         da coluna 0 ate X
+    // 30 31 32 33 34 35 36 37     
+    // 40 41 42 43 44 45 46 47         divido para os processos, o 0 faz o calculo diferente
+    // 50 51 52 53 54 55 56 57
+    // 60 61 62 63 64 65 66 67
+    // 70 71 72 73 74 75 76 77
+
+    // calculo para ex
+
+    // 00 01 02 03 04 05 06 07         da linha  0 ate Y 
+    // 10 11 12 13 14 15 16 17         da coluna 1 ate X
+    // 20 21 22 23 24 25 26 27
+    // 30 31 32 33 34 35 36 37
+    // 40 41 42 43 44 45 46 47         div. para os processos, todos fazem o msm calculo
+    // 50 51 52 53 54 55 56 57      
+    // 60 61 62 63 64 65 66 67
+    // 70 71 72 73 74 75 76 77
+    
+    // calculo para hz
+
+    // 00 01 02 03 04 05 06 07         da linha  0 ate Y-1
+    // 10 11 12 13 14 15 16 17         da coluna 0 ate X-1
+    // 20 21 22 23 24 25 26 27
+    // 30 31 32 33 34 35 36 37
+    // 40 41 42 43 44 45 46 47         div. para os processos, todos fazem o msm calculo  
+    // 50 51 52 53 54 55 56 57
+    // 60 61 62 63 64 65 66 67
+    // 70 71 72 73 74 75 76 77
+
+
+
+
     // if process 0, calculate first line of ey, depending on _fict_
     // TODO3: separar o if/else, deixar apenas o calculo do _fict_ dentro do if
     // pois so o prank 0 faz esse calculo, o resto é repetido entre todos processos
@@ -205,8 +239,13 @@ int main(int argc, char** argv) {
         //printf("sdy %f, fict %f\n", scattered_Data_ey[f], _fict_[0]);
       }
 
+      // enviando ultima linha de hz para processo subseuqnete
+      // ps: ultima linha é: (end-start-1)*NX
+      MPI_Send(&scattered_Data_hz[(end-start-1)*NX], NX, MPI_DOUBLE, process_Rank+1, 0, MPI_COMM_WORLD);
+      printf("Sending %f to %d, pos %d\n", scattered_Data_hz[(end-start-1)*NX], process_Rank+1, (end-start-1)*NX);
+
       for (int i=start+1 ; i<end ; i++){
-        for (int j=0 ; j<NY ; j++){
+        for (int j=0 ; j<NX ; j++){
           //printf("1Acessando [%d][%d] ou %d, valor em ey, hz: %f, %f\n", i, j, (i*NX)+j, scattered_Data_ey[(i*NX)+j], scattered_Data_hz[(i-1*NX)+j]);
           //printf("1Acessado %d %d -> %d %d, %d %d\n", i, j, i*NX, j, (i-1)*NX, j);
           
@@ -215,7 +254,6 @@ int main(int argc, char** argv) {
         }
       }
 
-      // for loops condition inverted?
       for (int i=start ; i<end ; i++){
         for (int j= 1 ; j < NX ; j++){
           //printf("2Acessando [%d][%d] ou %d, valor em ex, hz: %f, %f\n", i, j, (i*NX)+j, scattered_Data_ex[(i*NX)+j], scattered_Data_hz[(i*NX)+j-1]);
@@ -241,7 +279,7 @@ int main(int argc, char** argv) {
       // considerando que temos o extra_ey, fazemos a conta com for até NY-2 ao inves de NY-1 ** outdated
       // e damos hard code na ultima linha
       for (int i = 0; i < end - 1; i++){    // trabalho vai ded 0 ate end(linhas que cada processo possui)
-        for (int j = 0; j < NY - 1; j++){
+        for (int j = 0; j < NX - 1; j++){
           //printf("Acessando [%d][%d] ou %d, valor em ex, ey: %f, %f\n", i, j, (i*NX)+j, scattered_Data_ex[(i*NX)+j+1], scattered_Data_ex[(i*NX)+j]);
           
           scattered_Data_hz[(i*NX)+j] = scattered_Data_hz[(i*NX)+j] - 0.7*  (scattered_Data_ex[(i*NX)+j+1] - scattered_Data_ex[(i*NX)+j] + scattered_Data_ey[((i+1)*NX)+j] - scattered_Data_ey[(i*NX)+j]);
@@ -249,7 +287,7 @@ int main(int argc, char** argv) {
         }
       }
       int i = end - 1;
-      for (int j = 0; j < NY - 1; j++){
+      for (int j = 0; j < NX - 1; j++){
         // pelo fato de extra_ey ser apenas 1 linha apenas indexamos o j, o scattered_ey continua ali
         //printf("Acessando [%d][%d] ou %d, valor em ex, ey: %f, %f\n", i, j, (i*NX)+j, scattered_Data_ex[(i*NX)+j+1], scattered_Data_ex[(i*NX)+j]);
         
@@ -267,15 +305,28 @@ int main(int argc, char** argv) {
 
     }
     else{
-      // erro pois para calcular ex e ey precisamos de hz i-1, que nao esta no processo
-      // alem disso verificar pois nao executa a ultima linha o processo que recebeu o ultimo
-      // subsets de linha, o resto calcula normal
+      //send/recev aqui
+      // todos exceto 0 recebem
+      // todos exceto max-1 enviam
+      if (process_Rank != size_Of_Cluster-1){
+        MPI_Send(&scattered_Data_hz[(end-start-1)*NX], NX, MPI_DOUBLE, process_Rank+1, 0, MPI_COMM_WORLD);
+        printf("Sending %f to %d, pos %d\n", scattered_Data_hz[(end-start-1)*NX], process_Rank+1, (end-start-1)*NX);
+      }
+      MPI_Recv(extra_hz, NX, MPI_DOUBLE, process_Rank-1, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+
+      
+      // comeca com i=0 porem acessa i-1, precisa send/recv para receber uma linha extra
+      // deixar mais legivel apos, refatorar
+      int i = start;
+      for (int j = 0; j<NX; j++){
+        scattered_Data_ey[(i*nx)+j] = scattered_Data_ey[(i*nx)+j] - 0.5*(scattered_Data_hz[(i*nx)+j]-extra_hz[j]);
+      }
       for (int i=start+1 ; i<end ; i++){  
         for (int j=0 ; j<NX ; j++){
           // aqui precisamos de uma linha extra, exemplo: para calculo das linhas 2 e 3
           // precisamos de hz[1], hz[2] e hz[3]
 
-          printf("acessado: %d %d -> %d %d, %d %d\n", i, j, i*NX, j, (i-1)*NX, j);
+          //printf("acessado: %d %d -> %d %d, %d %d\n", i, j, i*NX, j, (i-1)*NX, j);
           
           scattered_Data_ey[(i*nx)+j] = scattered_Data_ey[(i*nx)+j] - 0.5*(scattered_Data_hz[(i*nx)+j]-scattered_Data_hz[((i-1)*NX)+j]);
           
@@ -309,17 +360,19 @@ int main(int argc, char** argv) {
 
       //TODO5: verificar se o calculo do hz esta correto, provavelmente nao
       for (int i = 0; i < end - 1; i++){
-        for (int j = 0; j < NY - 1; j++){
+        for (int j = 0; j < NX - 1; j++){
           scattered_Data_hz[(i*NX)+j] = scattered_Data_hz[(i*NX)+j] - 0.7*  (scattered_Data_ex[(i*NX)+j+1] - scattered_Data_ex[(i*NX)+j] + scattered_Data_ey[((i+1)*NX)+j] - scattered_Data_ey[(i*NX)+j]);
           
         }
       }
-      int i = end - 1;
-      for (int j = 0; j < NY - 1; j++){
+      if (process_Rank != size_Of_Cluster-1){
+        i = end - 1;
+        for (int j = 0; j < NX - 1; j++){
         // pelo fato de extra_ey ser apenas 1 linha apenas indexamos o j, o scattered_ey continua ali
-        
         scattered_Data_hz[(i*NX)+j] = scattered_Data_hz[(i*NX)+j] - 0.7*  (scattered_Data_ex[(i*NX)+j+1] - scattered_Data_ex[(i*NX)+j] + extra_ey[j] - scattered_Data_ey[(i*NX)+j]);
+        }
       }
+      
       MPI_Barrier(MPI_COMM_WORLD);
 
     }
@@ -339,10 +392,10 @@ int main(int argc, char** argv) {
       print_array(hz, NX, NY);
       // TODO6?: nao esta limpando a memoria, verificar onde colocar e nao esquecer!
       // // free matrixes and array
-      //free_matrix(ex, NX);
-      //free_matrix(ey, NX);
-      //free_matrix(hz, NX);
-      //free(_fict_);
+      free_matrix(ex, NX);
+      free_matrix(ey, NX);
+      free_matrix(hz, NX);
+      free(_fict_);
     }
     
 
