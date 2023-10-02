@@ -1,11 +1,13 @@
 import subprocess
 
 
+ptread_arq_names = ["fdtd_par", "fdtd_seq"]
+number_of_exec = 1
+number_of_threads = [2, 4, 8, 16]
+data_size = ["small", "medium", "large"]
+
+
 def main():
-    ptread_arq_names = ["fdtd_par", "fdtd_seq"]
-    number_of_exec = 1
-    number_of_threads = [2, 4, 8, 16]
-    data_size = ["small", "medium", "large"]
 
     par_times = []
     seq_times = []
@@ -16,6 +18,7 @@ def main():
 
     for size in data_size:
         line = []
+        par_sum
         for num_threads in number_of_threads:
             for i in range(number_of_exec):
                 #prints for debug
@@ -27,6 +30,7 @@ def main():
         par_times.append(line)
 
     for size in data_size:
+        seq_sum = 0
         for i in range(number_of_exec):
             #prints for debug
             print(f"Executando {i} do arquivo {ptread_arq_names[1]} com tamanho {size}")
@@ -42,8 +46,8 @@ def main():
     print("Tempos sequencial")
     print(seq_times)
     print("\n")
-    for ti, t in enumerate(number_of_threads):
-        for si, s in enumerate(data_size):
+    for si, s in enumerate(data_size):
+        for ti, t in enumerate(number_of_threads):
             print("Tempo paralelo para -d " + s + "\t-t " + str(t) + "\t= " + str(par_times[si][ti]))
 
     for si, s in enumerate(data_size):
