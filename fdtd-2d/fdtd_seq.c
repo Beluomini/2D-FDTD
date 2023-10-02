@@ -85,8 +85,6 @@ void kernel_fdtd_2d(int tmax,
 {
   int t, i, j;
 
-#pragma scop
-
   for(t = 0; t < TMAX; t++)
     {
       // printf("t: %d\n", t);
@@ -113,7 +111,6 @@ void kernel_fdtd_2d(int tmax,
       //print_array(hz, NX, NY);
     }
 
-#pragma endscop
 }
 
 int main(int argc, char** argv)
@@ -134,17 +131,17 @@ int main(int argc, char** argv)
     // ./fdtd -d <DATASET> 
     if (!strcmp(argv[1],"-d")){
       if (!strcmp(argv[2],"small")){
-        TMAX = 1;
-        NX = 8;
-        NY = 8;
+        TMAX = 40;
+        NX = 20480;
+        NY = 20480;
       } else if (!strcmp(argv[2],"medium")){
-        TMAX = 5;
-        NX = 100; 
-        NY = 100;
+        TMAX = 80;
+        NX = 20480; 
+        NY = 20480;
       } else if (!strcmp(argv[2],"large")){
-        TMAX = 10;
-        NX = 100;
-        NY = 100;
+        TMAX = 120;
+        NX = 20480;
+        NY = 20480;
       } else {
         printf("Invalid dataset\n");
         return 0;
@@ -186,7 +183,7 @@ int main(int argc, char** argv)
   /* Run kernel. */
   kernel_fdtd_2d (tmax, nx, ny, ex, ey, hz, _fict_);
 
-  print_array(ey, NX, NY);
+  //print_array(ey, NX, NY);
 
   /* Stop and print timer. */
   polybench_stop_instruments;
