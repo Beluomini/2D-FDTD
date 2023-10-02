@@ -46,7 +46,7 @@ mpi_sum = 0
 # small, medium, large
 hard_coded_seq = [7.04, 14.10, 21.30]
 
-def show_speedup(argv, use_hardcoded_seq=False):
+def show_speedup(argv):
     if "-h" in argv or "-seq" not in argv:
         if hard_coded_seq == []:
             print("Faltando tempo sequencial")
