@@ -3,7 +3,7 @@ MPI = mpicc
 MPIFLAGS = -g -Wall
 SRC_PATH = ./fdtd-2d
 C_INCLUDE = -I utilities -I fdtd-2d/fdtd-2d utilities/polybench.c
-C_FLAGS = -O3 -DPOLYBENCH_TIME -Wall
+C_FLAGS = -DPOLYBENCH_TIME -Wall
 
 all: fdtd_seq fdtd_par fdtd_mpi
 fdtd_seq: ${SRC_PATH}/fdtd_seq.c
@@ -16,7 +16,4 @@ fdtd_par: ${SRC_PATH}/fdtd_par.c
 
 fdtd_mpi: ${SRC_PATH}/fdtd_mpi.c
 	echo "Compiling fdtd_mpi"
-	$(MPI) -O3 ${SRC_PATH}/fdtd_mpi.c -o fdtd_mpi
-
-clear:
-	rm -f *.o
+	$(MPI) ${SRC_PATH}/fdtd_mpi.c -o fdtd_mpi
