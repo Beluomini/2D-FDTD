@@ -2,9 +2,9 @@ import subprocess
 
 
 def main():
-    ptread_arq_names = ["fdtd-par", "fdtd-seq"]
-    number_of_exec = 10
-    number_of_threads = [1, 2, 4, 8, 16]
+    ptread_arq_names = ["fdtd_par", "fdtd_seq"]
+    number_of_exec = 1
+    number_of_threads = [2, 4, 8, 16]
     data_size = ["small", "medium", "large"]
 
     par_times = []
@@ -19,18 +19,20 @@ def main():
         for num_threads in number_of_threads:
             for i in range(number_of_exec):
                 #prints for debug
-                #print("Executando " + str(i) + " do arquivo " + ptread_arq_names[0] + " com " + str(num_threads) + " threads e tamanho " + size)
-                par_sum += float(subprocess.check_output(["./" + ptread_arq_names[0] + " -d " + size + " -t " + str(num_threads)], shell=True))
-                #print("Execução " + str(i) + " do arquivo " + ptread_arq_names[0] + " com " + str(num_threads) + " threads e tamanho " + size + " finalizada")
+                print(f"Executando {i} do arquivo {ptread_arq_names[0]} com {num_threads} threads e tamanho {size}")
+                tmp= float(subprocess.check_output(["./" + ptread_arq_names[0] + " -d " + size + " -t " + str(num_threads)], shell=True))
+                par_sum += tmp
+                print(f"Tempo de execução: {tmp}")
             line.append(par_sum/number_of_exec)
         par_times.append(line)
 
     for size in data_size:
         for i in range(number_of_exec):
             #prints for debug
-            #print("Executando " + str(i) + " do arquivo " + ptread_arq_names[0] + " com tamanho " + size)
-            seq_sum += float(subprocess.check_output(["./" + ptread_arq_names[1] + " -d " + size], shell=True))
-            #print("Execução " + str(i) + " do arquivo " + ptread_arq_names[0] + " com tamanho " + size + " finalizada")
+            print(f"Executando {i} do arquivo {ptread_arq_names[1]} com tamanho {size}")
+            tmp= float(subprocess.check_output(["./" + ptread_arq_names[1] + " -d " + size], shell=True))
+            seq_sum += tmp
+            print(f"Tempo de execução: {tmp}")
         seq_times.append(seq_sum/number_of_exec)
 
     print("\n")
