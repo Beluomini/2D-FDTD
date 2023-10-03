@@ -112,7 +112,7 @@ def benchmark(argv):
                 mpi_sum = 0
                 for i in range(number_of_exec):
                     print(f"Executando {i} do arquivo {exec_names[2]} com {prcss} threads e tamanho {size}")
-                    tmp= float(subprocess.check_output([f"mpirun -np {prcss} {exec_names[2]} -d {size} -t {prcss}"], shell=True))
+                    tmp= float(subprocess.check_output([f"mpirun -np {prcss} {exec_names[2]} -d {size}"], shell=True))
                     mpi_sum += tmp
                     print(f"Tempo de execução: {tmp:.5f}")
                 line.append(mpi_sum/number_of_exec)
