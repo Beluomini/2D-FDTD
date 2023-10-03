@@ -216,17 +216,17 @@ int main(int argc, char** argv)
     // <DATASET> 
     if (!strcmp(argv[1],"-d")){
       if (!strcmp(argv[2],"small")){
-        TMAX = 40;
-        NX = 20480;
-        NY = 20480;
+        TMAX = 5;
+        NX = 10240;
+        NY = 10240;
       } else if (!strcmp(argv[2],"medium")){
-        TMAX = 80;
-        NX = 20480;
-        NY = 20480;
+        TMAX = 10;
+        NX = 10240;
+        NY = 10240;
       } else if (!strcmp(argv[2],"large")){
-        TMAX = 120;
-        NX = 20480;
-        NY = 20480;
+        TMAX = 15;
+        NX = 10240;
+        NY = 10240;
       } else {
         printf("Invalid dataset\n");
         return 0;
