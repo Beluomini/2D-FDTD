@@ -32,6 +32,10 @@ number_of_threads = [2, 4, 8, 16]
 number_of_clusters = [2, 4]
 data_size = ["small", "medium", "large"]
 
+# TODO: add -perf arg, to run with perf, in this case we dont capture the output
+# just redirect it to a file
+# prob perf cmd
+# perf stat -e cpu-clock,task-clock,context-switches,cpu-migrations,page-faults,branches,branch-misses,cache-references,cache-misses,cycles,instructions ->COMMAND<-             
 available_args = ["-p", "-s", "-m", "-h", "-e"]
 
 par_times = []
