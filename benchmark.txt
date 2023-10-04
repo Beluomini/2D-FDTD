@@ -1,0 +1,1414 @@
+
+ Performance counter stats for './fdtd_par -d small -t 2':
+
+        123.526,57 msec cpu-clock                 #    1,801 CPUs utilized          
+        123.526,61 msec task-clock                #    1,801 CPUs utilized          
+               442      context-switches          #    3,578 /sec                   
+                13      cpu-migrations            #    0,105 /sec                   
+           622.863      page-faults               #    5,042 K/sec                  
+    25.779.588.077      branches                  #  208,697 M/sec                    (83,32%)
+         4.362.914      branch-misses             #    0,02% of all branches          (83,34%)
+    19.418.448.765      cache-references          #  157,201 M/sec                    (83,33%)
+    11.411.034.914      cache-misses              #   58,764 % of all cache refs      (83,34%)
+   505.807.199.334      cycles                    #    4,095 GHz                      (66,66%)
+ 1.695.843.241.705      instructions              #    3,35  insn per cycle           (83,33%)
+
+      68,598771523 seconds time elapsed
+
+     122,950401000 seconds user
+       0,576086000 seconds sys
+
+
+
+ Performance counter stats for './fdtd_par -d small -t 2':
+
+        121.039,64 msec cpu-clock                 #    1,803 CPUs utilized          
+        121.039,66 msec task-clock                #    1,803 CPUs utilized          
+               548      context-switches          #    4,527 /sec                   
+                 5      cpu-migrations            #    0,041 /sec                   
+           622.861      page-faults               #    5,146 K/sec                  
+    25.776.627.079      branches                  #  212,960 M/sec                    (83,34%)
+         4.091.756      branch-misses             #    0,02% of all branches          (83,34%)
+    19.457.586.751      cache-references          #  160,754 M/sec                    (83,34%)
+    11.375.602.447      cache-misses              #   58,464 % of all cache refs      (83,34%)
+   500.185.138.339      cycles                    #    4,132 GHz                      (66,66%)
+ 1.695.817.824.806      instructions              #    3,39  insn per cycle           (83,32%)
+
+      67,147794677 seconds time elapsed
+
+     120,489841000 seconds user
+       0,547808000 seconds sys
+
+
+
+ Performance counter stats for './fdtd_par -d small -t 2':
+
+        121.624,86 msec cpu-clock                 #    1,807 CPUs utilized          
+        121.624,89 msec task-clock                #    1,807 CPUs utilized          
+               439      context-switches          #    3,609 /sec                   
+                 4      cpu-migrations            #    0,033 /sec                   
+           622.861      page-faults               #    5,121 K/sec                  
+    25.773.929.355      branches                  #  211,913 M/sec                    (83,33%)
+         4.066.725      branch-misses             #    0,02% of all branches          (83,34%)
+    19.497.280.697      cache-references          #  160,307 M/sec                    (83,33%)
+    11.395.299.335      cache-misses              #   58,446 % of all cache refs      (83,33%)
+   502.533.732.556      cycles                    #    4,132 GHz                      (66,66%)
+ 1.695.774.605.651      instructions              #    3,37  insn per cycle           (83,32%)
+
+      67,325597441 seconds time elapsed
+
+     121,154972000 seconds user
+       0,467949000 seconds sys
+
+
+
+ Performance counter stats for './fdtd_par -d small -t 2':
+
+        121.934,70 msec cpu-clock                 #    1,807 CPUs utilized          
+        121.934,76 msec task-clock                #    1,807 CPUs utilized          
+               474      context-switches          #    3,887 /sec                   
+                 1      cpu-migrations            #    0,008 /sec                   
+           622.864      page-faults               #    5,108 K/sec                  
+    25.777.335.732      branches                  #  211,403 M/sec                    (83,33%)
+         4.116.298      branch-misses             #    0,02% of all branches          (83,33%)
+    19.520.660.648      cache-references          #  160,091 M/sec                    (83,34%)
+    11.412.058.435      cache-misses              #   58,461 % of all cache refs      (83,33%)
+   503.882.155.033      cycles                    #    4,132 GHz                      (66,66%)
+ 1.695.788.191.669      instructions              #    3,37  insn per cycle           (83,34%)
+
+      67,468301840 seconds time elapsed
+
+     121,448110000 seconds user
+       0,484048000 seconds sys
+
+
+
+ Performance counter stats for './fdtd_par -d small -t 2':
+
+        122.037,80 msec cpu-clock                 #    1,806 CPUs utilized          
+        122.037,81 msec task-clock                #    1,806 CPUs utilized          
+               490      context-switches          #    4,015 /sec                   
+                12      cpu-migrations            #    0,098 /sec                   
+           622.863      page-faults               #    5,104 K/sec                  
+    25.775.999.265      branches                  #  211,213 M/sec                    (83,33%)
+         4.081.414      branch-misses             #    0,02% of all branches          (83,34%)
+    19.495.956.190      cache-references          #  159,753 M/sec                    (83,35%)
+    11.400.828.119      cache-misses              #   58,478 % of all cache refs      (83,34%)
+   502.228.939.784      cycles                    #    4,115 GHz                      (66,65%)
+ 1.695.826.427.667      instructions              #    3,38  insn per cycle           (83,33%)
+
+      67,561932409 seconds time elapsed
+
+     121,490562000 seconds user
+       0,544190000 seconds sys
+
+
+
+ Performance counter stats for './fdtd_par -d small -t 4':
+
+        127.205,55 msec cpu-clock                 #    3,551 CPUs utilized          
+        127.205,65 msec task-clock                #    3,551 CPUs utilized          
+             3.308      context-switches          #   26,005 /sec                   
+                30      cpu-migrations            #    0,236 /sec                   
+           622.865      page-faults               #    4,897 K/sec                  
+    25.813.343.974      branches                  #  202,926 M/sec                    (83,33%)
+         5.523.896      branch-misses             #    0,02% of all branches          (83,33%)
+    19.617.251.286      cache-references          #  154,217 M/sec                    (83,34%)
+    11.508.228.954      cache-misses              #   58,664 % of all cache refs      (83,33%)
+   516.253.421.978      cycles                    #    4,058 GHz                      (66,67%)
+ 1.695.846.648.042      instructions              #    3,28  insn per cycle           (83,33%)
+
+      35,825301242 seconds time elapsed
+
+     126,581206000 seconds user
+       0,623730000 seconds sys
+
+
+
+ Performance counter stats for './fdtd_par -d small -t 4':
+
+        126.850,77 msec cpu-clock                 #    3,550 CPUs utilized          
+        126.850,84 msec task-clock                #    3,550 CPUs utilized          
+               984      context-switches          #    7,757 /sec                   
+                 3      cpu-migrations            #    0,024 /sec                   
+           622.868      page-faults               #    4,910 K/sec                  
+    25.783.841.182      branches                  #  203,261 M/sec                    (83,32%)
+         5.185.048      branch-misses             #    0,02% of all branches          (83,34%)
+    19.541.293.095      cache-references          #  154,049 M/sec                    (83,34%)
+    11.454.718.463      cache-misses              #   58,618 % of all cache refs      (83,33%)
+   513.992.089.341      cycles                    #    4,052 GHz                      (66,68%)
+ 1.695.900.686.516      instructions              #    3,30  insn per cycle           (83,36%)
+
+      35,729699493 seconds time elapsed
+
+     126,292336000 seconds user
+       0,559841000 seconds sys
+
+
+
+ Performance counter stats for './fdtd_par -d small -t 4':
+
+        127.161,47 msec cpu-clock                 #    3,571 CPUs utilized          
+        127.161,53 msec task-clock                #    3,571 CPUs utilized          
+             1.401      context-switches          #   11,017 /sec                   
+                35      cpu-migrations            #    0,275 /sec                   
+           622.867      page-faults               #    4,898 K/sec                  
+    25.785.610.016      branches                  #  202,778 M/sec                    (83,34%)
+         5.278.670      branch-misses             #    0,02% of all branches          (83,35%)
+    19.646.924.770      cache-references          #  154,504 M/sec                    (83,34%)
+    11.465.862.162      cache-misses              #   58,360 % of all cache refs      (83,33%)
+   514.664.796.367      cycles                    #    4,047 GHz                      (66,64%)
+ 1.695.874.112.105      instructions              #    3,30  insn per cycle           (83,32%)
+
+      35,610730403 seconds time elapsed
+
+     126,606703000 seconds user
+       0,556187000 seconds sys
+
+
+
+ Performance counter stats for './fdtd_par -d small -t 4':
+
+        128.390,51 msec cpu-clock                 #    3,567 CPUs utilized          
+        128.390,57 msec task-clock                #    3,567 CPUs utilized          
+             2.722      context-switches          #   21,201 /sec                   
+                14      cpu-migrations            #    0,109 /sec                   
+           622.866      page-faults               #    4,851 K/sec                  
+    25.795.300.511      branches                  #  200,913 M/sec                    (83,31%)
+         5.399.028      branch-misses             #    0,02% of all branches          (83,35%)
+    19.714.681.835      cache-references          #  153,552 M/sec                    (83,34%)
+    11.556.067.191      cache-misses              #   58,617 % of all cache refs      (83,34%)
+   520.518.370.044      cycles                    #    4,054 GHz                      (66,66%)
+ 1.695.973.540.492      instructions              #    3,26  insn per cycle           (83,33%)
+
+      35,994318393 seconds time elapsed
+
+     127,754674000 seconds user
+       0,635794000 seconds sys
+
+
+
+ Performance counter stats for './fdtd_par -d small -t 4':
+
+        128.220,28 msec cpu-clock                 #    3,572 CPUs utilized          
+        128.220,30 msec task-clock                #    3,572 CPUs utilized          
+             3.055      context-switches          #   23,826 /sec                   
+                13      cpu-migrations            #    0,101 /sec                   
+           622.870      page-faults               #    4,858 K/sec                  
+    25.803.080.624      branches                  #  201,240 M/sec                    (83,34%)
+         5.496.667      branch-misses             #    0,02% of all branches          (83,34%)
+    19.713.908.197      cache-references          #  153,750 M/sec                    (83,31%)
+    11.545.437.738      cache-misses              #   58,565 % of all cache refs      (83,34%)
+   520.075.534.673      cycles                    #    4,056 GHz                      (66,66%)
+ 1.695.945.817.640      instructions              #    3,26  insn per cycle           (83,35%)
+
+      35,892120435 seconds time elapsed
+
+     127,604406000 seconds user
+       0,615808000 seconds sys
+
+
+
+ Performance counter stats for './fdtd_par -d small -t 8':
+
+        197.236,39 msec cpu-clock                 #    6,105 CPUs utilized          
+        197.236,81 msec task-clock                #    6,105 CPUs utilized          
+             3.457      context-switches          #   17,527 /sec                   
+               169      cpu-migrations            #    0,857 /sec                   
+           622.877      page-faults               #    3,158 K/sec                  
+    25.824.340.191      branches                  #  130,931 M/sec                    (83,32%)
+         8.098.235      branch-misses             #    0,03% of all branches          (83,34%)
+    19.772.279.331      cache-references          #  100,247 M/sec                    (83,32%)
+    11.619.260.806      cache-misses              #   58,765 % of all cache refs      (83,35%)
+   791.303.694.819      cycles                    #    4,012 GHz                      (66,68%)
+ 1.696.061.997.645      instructions              #    2,14  insn per cycle           (83,33%)
+
+      32,305090058 seconds time elapsed
+
+     196,574083000 seconds user
+       0,667816000 seconds sys
+
+
+
+ Performance counter stats for './fdtd_par -d small -t 8':
+
+        197.144,42 msec cpu-clock                 #    6,201 CPUs utilized          
+        197.144,97 msec task-clock                #    6,201 CPUs utilized          
+             2.823      context-switches          #   14,319 /sec                   
+               151      cpu-migrations            #    0,766 /sec                   
+           622.877      page-faults               #    3,159 K/sec                  
+    25.814.281.294      branches                  #  130,941 M/sec                    (83,32%)
+         7.887.096      branch-misses             #    0,03% of all branches          (83,35%)
+    19.974.755.939      cache-references          #  101,320 M/sec                    (83,32%)
+    11.593.360.272      cache-misses              #   58,040 % of all cache refs      (83,35%)
+   790.026.261.167      cycles                    #    4,007 GHz                      (66,66%)
+ 1.696.175.694.967      instructions              #    2,15  insn per cycle           (83,33%)
+
+      31,792822060 seconds time elapsed
+
+     196,521155000 seconds user
+       0,631977000 seconds sys
+
+
+
+ Performance counter stats for './fdtd_par -d small -t 8':
+
+        197.668,15 msec cpu-clock                 #    6,157 CPUs utilized          
+        197.668,70 msec task-clock                #    6,157 CPUs utilized          
+             1.778      context-switches          #    8,995 /sec                   
+               131      cpu-migrations            #    0,663 /sec                   
+           622.875      page-faults               #    3,151 K/sec                  
+    25.801.452.071      branches                  #  130,529 M/sec                    (83,34%)
+         7.824.441      branch-misses             #    0,03% of all branches          (83,35%)
+    19.954.679.891      cache-references          #  100,950 M/sec                    (83,35%)
+    11.594.076.395      cache-misses              #   58,102 % of all cache refs      (83,32%)
+   792.326.358.393      cycles                    #    4,008 GHz                      (66,64%)
+ 1.696.440.878.185      instructions              #    2,14  insn per cycle           (83,33%)
+
+      32,106767180 seconds time elapsed
+
+     197,116239000 seconds user
+       0,563349000 seconds sys
+
+
+
+ Performance counter stats for './fdtd_par -d small -t 8':
+
+        197.466,99 msec cpu-clock                 #    6,159 CPUs utilized          
+        197.467,55 msec task-clock                #    6,159 CPUs utilized          
+             2.499      context-switches          #   12,655 /sec                   
+               139      cpu-migrations            #    0,704 /sec                   
+           622.873      page-faults               #    3,154 K/sec                  
+    25.819.333.631      branches                  #  130,752 M/sec                    (83,32%)
+         8.040.081      branch-misses             #    0,03% of all branches          (83,34%)
+    19.940.303.448      cache-references          #  100,980 M/sec                    (83,34%)
+    11.594.453.216      cache-misses              #   58,146 % of all cache refs      (83,32%)
+   791.498.042.881      cycles                    #    4,008 GHz                      (66,68%)
+ 1.696.088.392.162      instructions              #    2,14  insn per cycle           (83,35%)
+
+      32,062302204 seconds time elapsed
+
+     196,818206000 seconds user
+       0,655461000 seconds sys
+
+
+
+ Performance counter stats for './fdtd_par -d small -t 8':
+
+        197.332,99 msec cpu-clock                 #    6,085 CPUs utilized          
+        197.333,41 msec task-clock                #    6,085 CPUs utilized          
+             1.662      context-switches          #    8,422 /sec                   
+               117      cpu-migrations            #    0,593 /sec                   
+           622.877      page-faults               #    3,156 K/sec                  
+    25.812.450.951      branches                  #  130,806 M/sec                    (83,33%)
+         7.900.672      branch-misses             #    0,03% of all branches          (83,33%)
+    19.652.371.973      cache-references          #   99,590 M/sec                    (83,34%)
+    11.583.771.811      cache-misses              #   58,943 % of all cache refs      (83,34%)
+   791.803.829.436      cycles                    #    4,013 GHz                      (66,66%)
+ 1.695.896.935.079      instructions              #    2,14  insn per cycle           (83,32%)
+
+      32,431958198 seconds time elapsed
+
+     196,820689000 seconds user
+       0,524001000 seconds sys
+
+
+
+ Performance counter stats for './fdtd_par -d small -t 16':
+
+        279.606,23 msec cpu-clock                 #   10,074 CPUs utilized          
+        279.608,01 msec task-clock                #   10,074 CPUs utilized          
+            11.619      context-switches          #   41,555 /sec                   
+             1.605      cpu-migrations            #    5,740 /sec                   
+           622.895      page-faults               #    2,228 K/sec                  
+    25.874.614.693      branches                  #   92,539 M/sec                    (83,33%)
+        12.647.393      branch-misses             #    0,05% of all branches          (83,33%)
+    19.724.272.803      cache-references          #   70,543 M/sec                    (83,34%)
+    11.788.581.160      cache-misses              #   59,767 % of all cache refs      (83,34%)
+ 1.114.702.523.794      cycles                    #    3,987 GHz                      (66,66%)
+ 1.696.506.804.129      instructions              #    1,52  insn per cycle           (83,35%)
+
+      27,756188722 seconds time elapsed
+
+     278,682982000 seconds user
+       0,919864000 seconds sys
+
+
+
+ Performance counter stats for './fdtd_par -d small -t 16':
+
+        279.243,13 msec cpu-clock                 #   10,058 CPUs utilized          
+        279.244,74 msec task-clock                #   10,058 CPUs utilized          
+            11.811      context-switches          #   42,296 /sec                   
+             1.573      cpu-migrations            #    5,633 /sec                   
+           622.894      page-faults               #    2,231 K/sec                  
+    25.877.109.454      branches                  #   92,668 M/sec                    (83,31%)
+        12.654.108      branch-misses             #    0,05% of all branches          (83,34%)
+    19.732.076.738      cache-references          #   70,663 M/sec                    (83,33%)
+    11.786.134.609      cache-misses              #   59,731 % of all cache refs      (83,36%)
+ 1.113.243.754.359      cycles                    #    3,987 GHz                      (66,67%)
+ 1.696.586.630.072      instructions              #    1,52  insn per cycle           (83,32%)
+
+      27,762358676 seconds time elapsed
+
+     278,354974000 seconds user
+       0,884454000 seconds sys
+
+
+
+ Performance counter stats for './fdtd_par -d small -t 16':
+
+        278.783,64 msec cpu-clock                 #   10,041 CPUs utilized          
+        278.785,61 msec task-clock                #   10,041 CPUs utilized          
+            11.831      context-switches          #   42,438 /sec                   
+             1.587      cpu-migrations            #    5,693 /sec                   
+           622.891      page-faults               #    2,234 K/sec                  
+    25.884.240.770      branches                  #   92,847 M/sec                    (83,31%)
+        12.667.393      branch-misses             #    0,05% of all branches          (83,32%)
+    19.721.092.751      cache-references          #   70,740 M/sec                    (83,37%)
+    11.785.829.874      cache-misses              #   59,763 % of all cache refs      (83,34%)
+ 1.111.409.563.351      cycles                    #    3,987 GHz                      (66,66%)
+ 1.696.128.263.623      instructions              #    1,53  insn per cycle           (83,34%)
+
+      27,765595126 seconds time elapsed
+
+     277,705591000 seconds user
+       1,075417000 seconds sys
+
+
+
+ Performance counter stats for './fdtd_par -d small -t 16':
+
+        279.685,09 msec cpu-clock                 #   10,068 CPUs utilized          
+        279.686,76 msec task-clock                #   10,068 CPUs utilized          
+            11.588      context-switches          #   41,432 /sec                   
+             1.639      cpu-migrations            #    5,860 /sec                   
+           622.896      page-faults               #    2,227 K/sec                  
+    25.871.774.503      branches                  #   92,503 M/sec                    (83,35%)
+        12.674.211      branch-misses             #    0,05% of all branches          (83,32%)
+    19.704.368.096      cache-references          #   70,452 M/sec                    (83,33%)
+    11.799.985.748      cache-misses              #   59,885 % of all cache refs      (83,34%)
+ 1.114.942.690.352      cycles                    #    3,986 GHz                      (66,66%)
+ 1.695.981.895.320      instructions              #    1,52  insn per cycle           (83,31%)
+
+      27,780521358 seconds time elapsed
+
+     278,710719000 seconds user
+       0,971660000 seconds sys
+
+
+
+ Performance counter stats for './fdtd_par -d small -t 16':
+
+        279.335,66 msec cpu-clock                 #   10,017 CPUs utilized          
+        279.337,36 msec task-clock                #   10,017 CPUs utilized          
+            11.483      context-switches          #   41,108 /sec                   
+             1.563      cpu-migrations            #    5,595 /sec                   
+           622.903      page-faults               #    2,230 K/sec                  
+    25.879.130.120      branches                  #   92,645 M/sec                    (83,34%)
+        12.594.070      branch-misses             #    0,05% of all branches          (83,34%)
+    19.721.653.573      cache-references          #   70,602 M/sec                    (83,33%)
+    11.794.049.930      cache-misses              #   59,803 % of all cache refs      (83,33%)
+ 1.113.627.122.527      cycles                    #    3,987 GHz                      (66,66%)
+ 1.696.049.339.419      instructions              #    1,52  insn per cycle           (83,33%)
+
+      27,885333217 seconds time elapsed
+
+     278,397682000 seconds user
+       0,936624000 seconds sys
+
+
+
+ Performance counter stats for './fdtd_par -d medium -t 2':
+
+        182.518,66 msec cpu-clock                 #    1,811 CPUs utilized          
+        182.518,73 msec task-clock                #    1,811 CPUs utilized          
+               565      context-switches          #    3,096 /sec                   
+                10      cpu-migrations            #    0,055 /sec                   
+           622.862      page-faults               #    3,413 K/sec                  
+    38.377.738.075      branches                  #  210,267 M/sec                    (83,33%)
+         5.788.126      branch-misses             #    0,02% of all branches          (83,34%)
+    29.241.168.012      cache-references          #  160,209 M/sec                    (83,33%)
+    17.093.669.883      cache-misses              #   58,458 % of all cache refs      (83,33%)
+   754.100.694.652      cycles                    #    4,132 GHz                      (66,66%)
+ 2.538.853.157.505      instructions              #    3,37  insn per cycle           (83,33%)
+
+     100,767975682 seconds time elapsed
+
+     182,001366000 seconds user
+       0,516037000 seconds sys
+
+
+
+ Performance counter stats for './fdtd_par -d medium -t 2':
+
+        182.166,21 msec cpu-clock                 #    1,810 CPUs utilized          
+        182.166,25 msec task-clock                #    1,810 CPUs utilized          
+               669      context-switches          #    3,672 /sec                   
+                12      cpu-migrations            #    0,066 /sec                   
+           622.862      page-faults               #    3,419 K/sec                  
+    38.375.597.227      branches                  #  210,663 M/sec                    (83,33%)
+         5.779.895      branch-misses             #    0,02% of all branches          (83,33%)
+    29.205.354.420      cache-references          #  160,323 M/sec                    (83,33%)
+    17.078.852.934      cache-misses              #   58,478 % of all cache refs      (83,33%)
+   752.599.082.505      cycles                    #    4,131 GHz                      (66,67%)
+ 2.538.803.625.367      instructions              #    3,37  insn per cycle           (83,33%)
+
+     100,636247318 seconds time elapsed
+
+     181,679484000 seconds user
+       0,484051000 seconds sys
+
+
+
+ Performance counter stats for './fdtd_par -d medium -t 2':
+
+        181.496,33 msec cpu-clock                 #    1,808 CPUs utilized          
+        181.496,39 msec task-clock                #    1,808 CPUs utilized          
+               591      context-switches          #    3,256 /sec                   
+                14      cpu-migrations            #    0,077 /sec                   
+           622.865      page-faults               #    3,432 K/sec                  
+    38.373.124.961      branches                  #  211,426 M/sec                    (83,33%)
+         5.792.864      branch-misses             #    0,02% of all branches          (83,33%)
+    29.195.826.148      cache-references          #  160,862 M/sec                    (83,34%)
+    17.060.114.994      cache-misses              #   58,433 % of all cache refs      (83,33%)
+   750.670.601.839      cycles                    #    4,136 GHz                      (66,66%)
+ 2.538.890.446.912      instructions              #    3,38  insn per cycle           (83,33%)
+
+     100,359089738 seconds time elapsed
+
+     181,002279000 seconds user
+       0,491919000 seconds sys
+
+
+
+ Performance counter stats for './fdtd_par -d medium -t 2':
+
+        182.489,10 msec cpu-clock                 #    1,813 CPUs utilized          
+        182.489,12 msec task-clock                #    1,813 CPUs utilized          
+               601      context-switches          #    3,293 /sec                   
+                 2      cpu-migrations            #    0,011 /sec                   
+           622.864      page-faults               #    3,413 K/sec                  
+    38.375.326.433      branches                  #  210,288 M/sec                    (83,34%)
+         5.815.166      branch-misses             #    0,02% of all branches          (83,33%)
+    29.257.664.775      cache-references          #  160,326 M/sec                    (83,34%)
+    17.093.620.941      cache-misses              #   58,424 % of all cache refs      (83,34%)
+   754.468.816.651      cycles                    #    4,134 GHz                      (66,65%)
+ 2.538.845.000.177      instructions              #    3,37  insn per cycle           (83,33%)
+
+     100,649129084 seconds time elapsed
+
+     181,971571000 seconds user
+       0,516044000 seconds sys
+
+
+
+ Performance counter stats for './fdtd_par -d medium -t 2':
+
+        179.387,29 msec cpu-clock                 #    1,810 CPUs utilized          
+        179.387,33 msec task-clock                #    1,810 CPUs utilized          
+             2.812      context-switches          #   15,676 /sec                   
+                93      cpu-migrations            #    0,518 /sec                   
+           622.863      page-faults               #    3,472 K/sec                  
+    38.395.444.611      branches                  #  214,037 M/sec                    (83,34%)
+         6.087.104      branch-misses             #    0,02% of all branches          (83,32%)
+    29.161.294.851      cache-references          #  162,561 M/sec                    (83,34%)
+    16.964.735.803      cache-misses              #   58,176 % of all cache refs      (83,34%)
+   744.521.879.138      cycles                    #    4,150 GHz                      (66,67%)
+ 2.538.902.026.670      instructions              #    3,41  insn per cycle           (83,33%)
+
+      99,102433064 seconds time elapsed
+
+     178,818589000 seconds user
+       0,567957000 seconds sys
+
+
+
+ Performance counter stats for './fdtd_par -d medium -t 4':
+
+        191.209,63 msec cpu-clock                 #    3,599 CPUs utilized          
+        191.209,72 msec task-clock                #    3,599 CPUs utilized          
+             1.019      context-switches          #    5,329 /sec                   
+                11      cpu-migrations            #    0,058 /sec                   
+           622.868      page-faults               #    3,258 K/sec                  
+    38.385.009.450      branches                  #  200,748 M/sec                    (83,33%)
+         7.395.789      branch-misses             #    0,02% of all branches          (83,34%)
+    29.483.144.726      cache-references          #  154,193 M/sec                    (83,33%)
+    17.207.861.401      cache-misses              #   58,365 % of all cache refs      (83,33%)
+   772.443.864.797      cycles                    #    4,040 GHz                      (66,67%)
+ 2.538.765.564.382      instructions              #    3,29  insn per cycle           (83,34%)
+
+      53,126773334 seconds time elapsed
+
+     190,719383000 seconds user
+       0,492297000 seconds sys
+
+
+
+ Performance counter stats for './fdtd_par -d medium -t 4':
+
+        191.012,40 msec cpu-clock                 #    3,597 CPUs utilized          
+        191.012,44 msec task-clock                #    3,597 CPUs utilized          
+             2.757      context-switches          #   14,434 /sec                   
+                31      cpu-migrations            #    0,162 /sec                   
+           622.866      page-faults               #    3,261 K/sec                  
+    38.397.735.241      branches                  #  201,022 M/sec                    (83,32%)
+         7.643.759      branch-misses             #    0,02% of all branches          (83,34%)
+    29.481.175.094      cache-references          #  154,342 M/sec                    (83,33%)
+    17.192.341.459      cache-misses              #   58,316 % of all cache refs      (83,34%)
+   772.211.660.001      cycles                    #    4,043 GHz                      (66,67%)
+ 2.538.929.485.389      instructions              #    3,29  insn per cycle           (83,33%)
+
+      53,106949302 seconds time elapsed
+
+     190,364019000 seconds user
+       0,647782000 seconds sys
+
+
+
+ Performance counter stats for './fdtd_par -d medium -t 4':
+
+        190.968,45 msec cpu-clock                 #    3,597 CPUs utilized          
+        190.968,55 msec task-clock                #    3,597 CPUs utilized          
+             3.045      context-switches          #   15,945 /sec                   
+                12      cpu-migrations            #    0,063 /sec                   
+           622.864      page-faults               #    3,262 K/sec                  
+    38.401.243.371      branches                  #  201,087 M/sec                    (83,34%)
+         7.687.291      branch-misses             #    0,02% of all branches          (83,33%)
+    29.439.070.353      cache-references          #  154,157 M/sec                    (83,33%)
+    17.227.927.063      cache-misses              #   58,521 % of all cache refs      (83,33%)
+   773.807.861.918      cycles                    #    4,052 GHz                      (66,67%)
+ 2.538.821.820.013      instructions              #    3,28  insn per cycle           (83,34%)
+
+      53,092533625 seconds time elapsed
+
+     190,369974000 seconds user
+       0,599779000 seconds sys
+
+
+
+ Performance counter stats for './fdtd_par -d medium -t 4':
+
+        190.642,35 msec cpu-clock                 #    3,583 CPUs utilized          
+        190.642,45 msec task-clock                #    3,583 CPUs utilized          
+             1.186      context-switches          #    6,221 /sec                   
+                49      cpu-migrations            #    0,257 /sec                   
+           622.865      page-faults               #    3,267 K/sec                  
+    38.388.016.230      branches                  #  201,361 M/sec                    (83,33%)
+         7.466.400      branch-misses             #    0,02% of all branches          (83,34%)
+    29.370.869.420      cache-references          #  154,063 M/sec                    (83,32%)
+    17.230.351.859      cache-misses              #   58,665 % of all cache refs      (83,34%)
+   771.327.968.278      cycles                    #    4,046 GHz                      (66,67%)
+ 2.538.916.625.425      instructions              #    3,29  insn per cycle           (83,35%)
+
+      53,213966617 seconds time elapsed
+
+     190,129512000 seconds user
+       0,516047000 seconds sys
+
+
+
+ Performance counter stats for './fdtd_par -d medium -t 4':
+
+        191.019,00 msec cpu-clock                 #    3,596 CPUs utilized          
+        191.019,08 msec task-clock                #    3,596 CPUs utilized          
+             1.440      context-switches          #    7,539 /sec                   
+                33      cpu-migrations            #    0,173 /sec                   
+           622.866      page-faults               #    3,261 K/sec                  
+    38.389.724.351      branches                  #  200,973 M/sec                    (83,33%)
+         7.384.161      branch-misses             #    0,02% of all branches          (83,34%)
+    29.349.431.702      cache-references          #  153,647 M/sec                    (83,35%)
+    17.217.212.746      cache-misses              #   58,663 % of all cache refs      (83,33%)
+   775.472.734.464      cycles                    #    4,060 GHz                      (66,65%)
+ 2.538.991.098.092      instructions              #    3,27  insn per cycle           (83,32%)
+
+      53,116315279 seconds time elapsed
+
+     190,504344000 seconds user
+       0,516228000 seconds sys
+
+
+
+ Performance counter stats for './fdtd_par -d medium -t 8':
+
+        295.178,23 msec cpu-clock                 #    6,176 CPUs utilized          
+        295.179,02 msec task-clock                #    6,176 CPUs utilized          
+             4.145      context-switches          #   14,042 /sec                   
+               181      cpu-migrations            #    0,613 /sec                   
+           622.878      page-faults               #    2,110 K/sec                  
+    38.439.669.321      branches                  #  130,225 M/sec                    (83,33%)
+        11.541.477      branch-misses             #    0,03% of all branches          (83,33%)
+    29.763.972.542      cache-references          #  100,834 M/sec                    (83,34%)
+    17.361.120.294      cache-misses              #   58,329 % of all cache refs      (83,34%)
+ 1.183.623.857.547      cycles                    #    4,010 GHz                      (66,66%)
+ 2.539.130.867.542      instructions              #    2,15  insn per cycle           (83,32%)
+
+      47,791891304 seconds time elapsed
+
+     294,555240000 seconds user
+       0,635601000 seconds sys
+
+
+
+ Performance counter stats for './fdtd_par -d medium -t 8':
+
+        295.603,09 msec cpu-clock                 #    6,244 CPUs utilized          
+        295.603,99 msec task-clock                #    6,244 CPUs utilized          
+             4.516      context-switches          #   15,277 /sec                   
+               158      cpu-migrations            #    0,534 /sec                   
+           622.873      page-faults               #    2,107 K/sec                  
+    38.438.602.785      branches                  #  130,034 M/sec                    (83,32%)
+        11.492.931      branch-misses             #    0,03% of all branches          (83,33%)
+    29.863.312.250      cache-references          #  101,025 M/sec                    (83,33%)
+    17.357.701.057      cache-misses              #   58,124 % of all cache refs      (83,34%)
+ 1.184.781.934.939      cycles                    #    4,008 GHz                      (66,68%)
+ 2.539.122.658.271      instructions              #    2,14  insn per cycle           (83,34%)
+
+      47,342401128 seconds time elapsed
+
+     294,914957000 seconds user
+       0,700272000 seconds sys
+
+
+
+ Performance counter stats for './fdtd_par -d medium -t 8':
+
+        295.530,13 msec cpu-clock                 #    6,160 CPUs utilized          
+        295.530,83 msec task-clock                #    6,160 CPUs utilized          
+             5.001      context-switches          #   16,922 /sec                   
+               211      cpu-migrations            #    0,714 /sec                   
+           622.874      page-faults               #    2,108 K/sec                  
+    38.444.736.576      branches                  #  130,087 M/sec                    (83,32%)
+        11.745.585      branch-misses             #    0,03% of all branches          (83,34%)
+    29.699.140.647      cache-references          #  100,494 M/sec                    (83,33%)
+    17.402.223.502      cache-misses              #   58,595 % of all cache refs      (83,33%)
+ 1.184.971.813.008      cycles                    #    4,010 GHz                      (66,68%)
+ 2.538.947.879.970      instructions              #    2,14  insn per cycle           (83,34%)
+
+      47,975661522 seconds time elapsed
+
+     294,779063000 seconds user
+       0,760080000 seconds sys
+
+
+
+ Performance counter stats for './fdtd_par -d medium -t 8':
+
+        295.762,70 msec cpu-clock                 #    6,177 CPUs utilized          
+        295.763,58 msec task-clock                #    6,177 CPUs utilized          
+             3.692      context-switches          #   12,483 /sec                   
+               219      cpu-migrations            #    0,740 /sec                   
+           622.873      page-faults               #    2,106 K/sec                  
+    38.425.204.555      branches                  #  129,919 M/sec                    (83,33%)
+        11.470.884      branch-misses             #    0,03% of all branches          (83,34%)
+    29.904.861.505      cache-references          #  101,111 M/sec                    (83,34%)
+    17.382.069.755      cache-misses              #   58,125 % of all cache refs      (83,34%)
+ 1.185.279.384.253      cycles                    #    4,008 GHz                      (66,66%)
+ 2.539.480.292.004      instructions              #    2,14  insn per cycle           (83,33%)
+
+      47,884426333 seconds time elapsed
+
+     295,123548000 seconds user
+       0,652078000 seconds sys
+
+
+
+ Performance counter stats for './fdtd_par -d medium -t 8':
+
+        295.898,37 msec cpu-clock                 #    6,124 CPUs utilized          
+        295.899,62 msec task-clock                #    6,124 CPUs utilized          
+             7.505      context-switches          #   25,363 /sec                   
+               222      cpu-migrations            #    0,750 /sec                   
+           622.876      page-faults               #    2,105 K/sec                  
+    38.467.871.783      branches                  #  130,003 M/sec                    (83,33%)
+        12.134.900      branch-misses             #    0,03% of all branches          (83,34%)
+    29.718.623.253      cache-references          #  100,435 M/sec                    (83,33%)
+    17.394.296.820      cache-misses              #   58,530 % of all cache refs      (83,32%)
+ 1.187.042.127.587      cycles                    #    4,012 GHz                      (66,68%)
+ 2.539.223.978.638      instructions              #    2,14  insn per cycle           (83,35%)
+
+      48,317701655 seconds time elapsed
+
+     294,988073000 seconds user
+       0,912024000 seconds sys
+
+
+
+ Performance counter stats for './fdtd_par -d medium -t 16':
+
+        418.207,65 msec cpu-clock                 #   10,173 CPUs utilized          
+        418.210,58 msec task-clock                #   10,173 CPUs utilized          
+            18.186      context-switches          #   43,485 /sec                   
+             2.467      cpu-migrations            #    5,899 /sec                   
+           622.897      page-faults               #    1,489 K/sec                  
+    38.536.319.309      branches                  #   92,146 M/sec                    (83,34%)
+        18.697.135      branch-misses             #    0,05% of all branches          (83,34%)
+    29.552.066.207      cache-references          #   70,663 M/sec                    (83,35%)
+    17.657.567.522      cache-misses              #   59,751 % of all cache refs      (83,34%)
+ 1.666.977.903.955      cycles                    #    3,986 GHz                      (66,64%)
+ 2.539.193.185.730      instructions              #    1,52  insn per cycle           (83,32%)
+
+      41,110297560 seconds time elapsed
+
+     417,004844000 seconds user
+       1,198634000 seconds sys
+
+
+
+ Performance counter stats for './fdtd_par -d medium -t 16':
+
+        418.425,57 msec cpu-clock                 #   10,165 CPUs utilized          
+        418.428,32 msec task-clock                #   10,165 CPUs utilized          
+            18.108      context-switches          #   43,276 /sec                   
+             2.411      cpu-migrations            #    5,762 /sec                   
+           622.897      page-faults               #    1,489 K/sec                  
+    38.534.781.748      branches                  #   92,094 M/sec                    (83,33%)
+        18.712.414      branch-misses             #    0,05% of all branches          (83,34%)
+    29.545.723.877      cache-references          #   70,611 M/sec                    (83,33%)
+    17.656.231.759      cache-misses              #   59,759 % of all cache refs      (83,34%)
+ 1.667.975.161.706      cycles                    #    3,986 GHz                      (66,67%)
+ 2.539.100.682.503      instructions              #    1,52  insn per cycle           (83,35%)
+
+      41,161823423 seconds time elapsed
+
+     417,249531000 seconds user
+       1,171353000 seconds sys
+
+
+
+ Performance counter stats for './fdtd_par -d medium -t 16':
+
+        418.749,03 msec cpu-clock                 #   10,185 CPUs utilized          
+        418.752,00 msec task-clock                #   10,185 CPUs utilized          
+            18.283      context-switches          #   43,661 /sec                   
+             2.380      cpu-migrations            #    5,684 /sec                   
+           622.907      page-faults               #    1,488 K/sec                  
+    38.539.117.528      branches                  #   92,034 M/sec                    (83,31%)
+        18.658.362      branch-misses             #    0,05% of all branches          (83,34%)
+    29.516.617.627      cache-references          #   70,487 M/sec                    (83,33%)
+    17.646.920.099      cache-misses              #   59,786 % of all cache refs      (83,34%)
+ 1.669.207.013.452      cycles                    #    3,986 GHz                      (66,69%)
+ 2.539.882.509.380      instructions              #    1,52  insn per cycle           (83,35%)
+
+      41,115344083 seconds time elapsed
+
+     417,621478000 seconds user
+       1,123777000 seconds sys
+
+
+
+ Performance counter stats for './fdtd_par -d medium -t 16':
+
+        418.809,56 msec cpu-clock                 #   10,150 CPUs utilized          
+        418.812,46 msec task-clock                #   10,150 CPUs utilized          
+            18.210      context-switches          #   43,480 /sec                   
+             2.365      cpu-migrations            #    5,647 /sec                   
+           622.897      page-faults               #    1,487 K/sec                  
+    38.538.185.926      branches                  #   92,018 M/sec                    (83,33%)
+        18.804.862      branch-misses             #    0,05% of all branches          (83,33%)
+    29.542.136.564      cache-references          #   70,538 M/sec                    (83,34%)
+    17.655.830.631      cache-misses              #   59,765 % of all cache refs      (83,33%)
+ 1.669.508.870.746      cycles                    #    3,986 GHz                      (66,66%)
+ 2.540.007.736.730      instructions              #    1,52  insn per cycle           (83,34%)
+
+      41,261433245 seconds time elapsed
+
+     417,644476000 seconds user
+       1,160167000 seconds sys
+
+
+
+ Performance counter stats for './fdtd_par -d medium -t 16':
+
+        417.803,45 msec cpu-clock                 #   10,154 CPUs utilized          
+        417.806,18 msec task-clock                #   10,154 CPUs utilized          
+            17.864      context-switches          #   42,757 /sec                   
+             2.328      cpu-migrations            #    5,572 /sec                   
+           622.896      page-faults               #    1,491 K/sec                  
+    38.533.069.088      branches                  #   92,227 M/sec                    (83,32%)
+        18.643.822      branch-misses             #    0,05% of all branches          (83,34%)
+    29.552.594.245      cache-references          #   70,733 M/sec                    (83,34%)
+    17.647.792.308      cache-misses              #   59,717 % of all cache refs      (83,34%)
+ 1.665.511.944.331      cycles                    #    3,986 GHz                      (66,66%)
+ 2.540.140.189.689      instructions              #    1,53  insn per cycle           (83,32%)
+
+      41,148021135 seconds time elapsed
+
+     416,681090000 seconds user
+       1,118864000 seconds sys
+
+
+
+ Performance counter stats for './fdtd_par -d large -t 2':
+
+        245.396,65 msec cpu-clock                 #    1,821 CPUs utilized          
+        245.396,69 msec task-clock                #    1,821 CPUs utilized          
+               799      context-switches          #    3,256 /sec                   
+                 3      cpu-migrations            #    0,012 /sec                   
+           622.864      page-faults               #    2,538 K/sec                  
+    50.974.232.677      branches                  #  207,722 M/sec                    (83,34%)
+         7.602.211      branch-misses             #    0,01% of all branches          (83,33%)
+    39.478.627.509      cache-references          #  160,877 M/sec                    (83,33%)
+    22.931.574.122      cache-misses              #   58,086 % of all cache refs      (83,33%)
+ 1.014.610.148.961      cycles                    #    4,135 GHz                      (66,66%)
+ 3.382.001.782.475      instructions              #    3,33  insn per cycle           (83,33%)
+
+     134,729767185 seconds time elapsed
+
+     244,884661000 seconds user
+       0,507976000 seconds sys
+
+
+
+ Performance counter stats for './fdtd_par -d large -t 2':
+
+        238.989,36 msec cpu-clock                 #    1,812 CPUs utilized          
+        238.989,44 msec task-clock                #    1,812 CPUs utilized          
+               872      context-switches          #    3,649 /sec                   
+                 7      cpu-migrations            #    0,029 /sec                   
+           622.864      page-faults               #    2,606 K/sec                  
+    50.979.909.137      branches                  #  213,315 M/sec                    (83,33%)
+         7.451.133      branch-misses             #    0,01% of all branches          (83,33%)
+    38.816.847.163      cache-references          #  162,421 M/sec                    (83,34%)
+    22.684.064.368      cache-misses              #   58,439 % of all cache refs      (83,34%)
+   994.973.827.311      cycles                    #    4,163 GHz                      (66,67%)
+ 3.381.798.767.762      instructions              #    3,40  insn per cycle           (83,34%)
+
+     131,908340599 seconds time elapsed
+
+     238,468144000 seconds user
+       0,515991000 seconds sys
+
+
+
+ Performance counter stats for './fdtd_par -d large -t 2':
+
+        241.719,17 msec cpu-clock                 #    1,820 CPUs utilized          
+        241.719,25 msec task-clock                #    1,820 CPUs utilized          
+               956      context-switches          #    3,955 /sec                   
+                 7      cpu-migrations            #    0,029 /sec                   
+           622.863      page-faults               #    2,577 K/sec                  
+    50.979.293.811      branches                  #  210,903 M/sec                    (83,33%)
+         7.574.668      branch-misses             #    0,01% of all branches          (83,33%)
+    39.535.068.645      cache-references          #  163,558 M/sec                    (83,33%)
+    22.833.109.992      cache-misses              #   57,754 % of all cache refs      (83,34%)
+ 1.006.256.162.528      cycles                    #    4,163 GHz                      (66,67%)
+ 3.381.846.206.034      instructions              #    3,36  insn per cycle           (83,34%)
+
+     132,845748643 seconds time elapsed
+
+     241,204842000 seconds user
+       0,507858000 seconds sys
+
+
+
+ Performance counter stats for './fdtd_par -d large -t 2':
+
+        240.158,99 msec cpu-clock                 #    1,816 CPUs utilized          
+        240.159,09 msec task-clock                #    1,816 CPUs utilized          
+               930      context-switches          #    3,872 /sec                   
+                28      cpu-migrations            #    0,117 /sec                   
+           622.864      page-faults               #    2,594 K/sec                  
+    50.976.637.955      branches                  #  212,262 M/sec                    (83,34%)
+         7.553.224      branch-misses             #    0,01% of all branches          (83,34%)
+    39.120.610.086      cache-references          #  162,895 M/sec                    (83,34%)
+    22.666.889.111      cache-misses              #   57,941 % of all cache refs      (83,33%)
+ 1.000.667.668.884      cycles                    #    4,167 GHz                      (66,66%)
+ 3.381.826.501.145      instructions              #    3,38  insn per cycle           (83,32%)
+
+     132,227811917 seconds time elapsed
+
+     239,673388000 seconds user
+       0,479986000 seconds sys
+
+
+
+ Performance counter stats for './fdtd_par -d large -t 2':
+
+        239.528,68 msec cpu-clock                 #    1,813 CPUs utilized          
+        239.528,78 msec task-clock                #    1,813 CPUs utilized          
+               846      context-switches          #    3,532 /sec                   
+                10      cpu-migrations            #    0,042 /sec                   
+           622.862      page-faults               #    2,600 K/sec                  
+    50.981.174.820      branches                  #  212,839 M/sec                    (83,33%)
+         7.585.937      branch-misses             #    0,01% of all branches          (83,33%)
+    39.267.961.666      cache-references          #  163,938 M/sec                    (83,33%)
+    22.772.430.102      cache-misses              #   57,992 % of all cache refs      (83,34%)
+   997.134.917.758      cycles                    #    4,163 GHz                      (66,66%)
+ 3.381.938.149.828      instructions              #    3,39  insn per cycle           (83,33%)
+
+     132,135830899 seconds time elapsed
+
+     238,984331000 seconds user
+       0,539973000 seconds sys
+
+
+
+ Performance counter stats for './fdtd_par -d large -t 4':
+
+        252.946,28 msec cpu-clock                 #    3,613 CPUs utilized          
+        252.946,45 msec task-clock                #    3,613 CPUs utilized          
+             1.527      context-switches          #    6,037 /sec                   
+                60      cpu-migrations            #    0,237 /sec                   
+           622.869      page-faults               #    2,462 K/sec                  
+    50.991.087.922      branches                  #  201,589 M/sec                    (83,33%)
+         9.698.878      branch-misses             #    0,02% of all branches          (83,33%)
+    39.126.500.020      cache-references          #  154,683 M/sec                    (83,33%)
+    22.914.088.821      cache-misses              #   58,564 % of all cache refs      (83,35%)
+ 1.028.875.090.720      cycles                    #    4,068 GHz                      (66,67%)
+ 3.382.061.183.792      instructions              #    3,29  insn per cycle           (83,34%)
+
+      70,002398307 seconds time elapsed
+
+     252,414672000 seconds user
+       0,535971000 seconds sys
+
+
+
+ Performance counter stats for './fdtd_par -d large -t 4':
+
+        253.774,47 msec cpu-clock                 #    3,621 CPUs utilized          
+        253.774,58 msec task-clock                #    3,621 CPUs utilized          
+             1.241      context-switches          #    4,890 /sec                   
+                 9      cpu-migrations            #    0,035 /sec                   
+           622.866      page-faults               #    2,454 K/sec                  
+    50.989.568.656      branches                  #  200,925 M/sec                    (83,34%)
+         9.578.390      branch-misses             #    0,02% of all branches          (83,32%)
+    39.138.844.594      cache-references          #  154,227 M/sec                    (83,33%)
+    22.931.988.250      cache-misses              #   58,591 % of all cache refs      (83,34%)
+ 1.030.317.348.596      cycles                    #    4,060 GHz                      (66,67%)
+ 3.381.906.874.210      instructions              #    3,28  insn per cycle           (83,34%)
+
+      70,085174799 seconds time elapsed
+
+     253,245947000 seconds user
+       0,531794000 seconds sys
+
+
+
+ Performance counter stats for './fdtd_par -d large -t 4':
+
+        253.638,90 msec cpu-clock                 #    3,620 CPUs utilized          
+        253.639,00 msec task-clock                #    3,620 CPUs utilized          
+             1.288      context-switches          #    5,078 /sec                   
+                 9      cpu-migrations            #    0,035 /sec                   
+           622.868      page-faults               #    2,456 K/sec                  
+    50.983.260.314      branches                  #  201,007 M/sec                    (83,32%)
+         9.561.687      branch-misses             #    0,02% of all branches          (83,34%)
+    39.169.833.426      cache-references          #  154,431 M/sec                    (83,34%)
+    22.921.003.266      cache-misses              #   58,517 % of all cache refs      (83,32%)
+ 1.029.833.694.510      cycles                    #    4,060 GHz                      (66,67%)
+ 3.381.909.118.812      instructions              #    3,28  insn per cycle           (83,34%)
+
+      70,071375645 seconds time elapsed
+
+     253,125938000 seconds user
+       0,516150000 seconds sys
+
+
+
+ Performance counter stats for './fdtd_par -d large -t 4':
+
+        251.758,98 msec cpu-clock                 #    3,608 CPUs utilized          
+        251.759,11 msec task-clock                #    3,608 CPUs utilized          
+             1.253      context-switches          #    4,977 /sec                   
+                86      cpu-migrations            #    0,342 /sec                   
+           622.868      page-faults               #    2,474 K/sec                  
+    50.987.456.781      branches                  #  202,525 M/sec                    (83,34%)
+         9.624.364      branch-misses             #    0,02% of all branches          (83,34%)
+    39.286.126.882      cache-references          #  156,047 M/sec                    (83,33%)
+    22.921.292.981      cache-misses              #   58,344 % of all cache refs      (83,34%)
+ 1.027.473.880.838      cycles                    #    4,081 GHz                      (66,65%)
+ 3.381.996.700.593      instructions              #    3,29  insn per cycle           (83,33%)
+
+      69,776747856 seconds time elapsed
+
+     251,252646000 seconds user
+       0,511936000 seconds sys
+
+
+
+ Performance counter stats for './fdtd_par -d large -t 4':
+
+        253.884,72 msec cpu-clock                 #    3,616 CPUs utilized          
+        253.884,81 msec task-clock                #    3,616 CPUs utilized          
+             1.255      context-switches          #    4,943 /sec                   
+                 6      cpu-migrations            #    0,024 /sec                   
+           622.868      page-faults               #    2,453 K/sec                  
+    50.986.019.153      branches                  #  200,823 M/sec                    (83,34%)
+         9.573.992      branch-misses             #    0,02% of all branches          (83,34%)
+    39.239.783.465      cache-references          #  154,557 M/sec                    (83,33%)
+    22.964.637.994      cache-misses              #   58,524 % of all cache refs      (83,33%)
+ 1.030.863.387.139      cycles                    #    4,060 GHz                      (66,66%)
+ 3.381.791.992.881      instructions              #    3,28  insn per cycle           (83,33%)
+
+      70,213660560 seconds time elapsed
+
+     253,369351000 seconds user
+       0,519797000 seconds sys
+
+
+
+ Performance counter stats for './fdtd_par -d large -t 8':
+
+        390.586,11 msec cpu-clock                 #    6,189 CPUs utilized          
+        390.586,88 msec task-clock                #    6,189 CPUs utilized          
+             2.928      context-switches          #    7,496 /sec                   
+               325      cpu-migrations            #    0,832 /sec                   
+           622.877      page-faults               #    1,595 K/sec                  
+    51.037.968.111      branches                  #  130,670 M/sec                    (83,34%)
+        14.763.104      branch-misses             #    0,03% of all branches          (83,34%)
+    40.007.937.923      cache-references          #  102,430 M/sec                    (83,32%)
+    23.133.242.661      cache-misses              #   57,822 % of all cache refs      (83,33%)
+ 1.568.067.973.912      cycles                    #    4,015 GHz                      (66,67%)
+ 3.381.960.120.380      instructions              #    2,16  insn per cycle           (83,34%)
+
+      63,114045327 seconds time elapsed
+
+     390,046714000 seconds user
+       0,563957000 seconds sys
+
+
+
+ Performance counter stats for './fdtd_par -d large -t 8':
+
+        389.887,53 msec cpu-clock                 #    6,197 CPUs utilized          
+        389.888,57 msec task-clock                #    6,197 CPUs utilized          
+             2.952      context-switches          #    7,571 /sec                   
+               351      cpu-migrations            #    0,900 /sec                   
+           622.875      page-faults               #    1,598 K/sec                  
+    51.033.633.575      branches                  #  130,893 M/sec                    (83,33%)
+        14.799.655      branch-misses             #    0,03% of all branches          (83,34%)
+    39.951.561.819      cache-references          #  102,469 M/sec                    (83,33%)
+    23.153.285.307      cache-misses              #   57,953 % of all cache refs      (83,33%)
+ 1.565.146.039.393      cycles                    #    4,014 GHz                      (66,66%)
+ 3.381.853.081.480      instructions              #    2,16  insn per cycle           (83,33%)
+
+      62,910913642 seconds time elapsed
+
+     389,376388000 seconds user
+       0,535967000 seconds sys
+
+
+
+ Performance counter stats for './fdtd_par -d large -t 8':
+
+        391.560,07 msec cpu-clock                 #    6,127 CPUs utilized          
+        391.561,10 msec task-clock                #    6,127 CPUs utilized          
+             2.935      context-switches          #    7,496 /sec                   
+               334      cpu-migrations            #    0,853 /sec                   
+           622.877      page-faults               #    1,591 K/sec                  
+    51.036.213.220      branches                  #  130,341 M/sec                    (83,34%)
+        14.874.837      branch-misses             #    0,03% of all branches          (83,34%)
+    39.847.652.672      cache-references          #  101,766 M/sec                    (83,33%)
+    23.158.096.930      cache-misses              #   58,117 % of all cache refs      (83,34%)
+ 1.572.540.054.492      cycles                    #    4,016 GHz                      (66,66%)
+ 3.381.954.233.865      instructions              #    2,15  insn per cycle           (83,32%)
+
+      63,908305577 seconds time elapsed
+
+     390,984181000 seconds user
+       0,600098000 seconds sys
+
+
+
+ Performance counter stats for './fdtd_par -d large -t 8':
+
+        391.058,00 msec cpu-clock                 #    6,196 CPUs utilized          
+        391.058,90 msec task-clock                #    6,196 CPUs utilized          
+             3.017      context-switches          #    7,715 /sec                   
+               354      cpu-migrations            #    0,905 /sec                   
+           622.876      page-faults               #    1,593 K/sec                  
+    51.027.795.783      branches                  #  130,486 M/sec                    (83,33%)
+        14.866.144      branch-misses             #    0,03% of all branches          (83,33%)
+    39.910.075.266      cache-references          #  102,057 M/sec                    (83,34%)
+    23.128.939.775      cache-misses              #   57,953 % of all cache refs      (83,33%)
+ 1.570.045.713.201      cycles                    #    4,015 GHz                      (66,66%)
+ 3.381.983.926.403      instructions              #    2,15  insn per cycle           (83,34%)
+
+      63,114813290 seconds time elapsed
+
+     390,518125000 seconds user
+       0,564072000 seconds sys
+
+
+
+ Performance counter stats for './fdtd_par -d large -t 8':
+
+        389.914,95 msec cpu-clock                 #    6,319 CPUs utilized          
+        389.915,77 msec task-clock                #    6,319 CPUs utilized          
+             2.939      context-switches          #    7,538 /sec                   
+               299      cpu-migrations            #    0,767 /sec                   
+           622.877      page-faults               #    1,597 K/sec                  
+    51.035.030.287      branches                  #  130,887 M/sec                    (83,34%)
+        14.601.200      branch-misses             #    0,03% of all branches          (83,33%)
+    40.318.663.770      cache-references          #  103,404 M/sec                    (83,34%)
+    23.128.098.031      cache-misses              #   57,363 % of all cache refs      (83,33%)
+ 1.563.767.145.162      cycles                    #    4,011 GHz                      (66,67%)
+ 3.382.283.704.357      instructions              #    2,16  insn per cycle           (83,34%)
+
+      61,709997879 seconds time elapsed
+
+     389,431999000 seconds user
+       0,508031000 seconds sys
+
+
+
+ Performance counter stats for './fdtd_par -d large -t 16':
+
+        557.725,36 msec cpu-clock                 #   10,309 CPUs utilized          
+        557.726,94 msec task-clock                #   10,309 CPUs utilized          
+            15.271      context-switches          #   27,381 /sec                   
+             3.012      cpu-migrations            #    5,400 /sec                   
+           622.893      page-faults               #    1,117 K/sec                  
+    51.109.920.943      branches                  #   91,640 M/sec                    (83,34%)
+        23.078.342      branch-misses             #    0,05% of all branches          (83,33%)
+    39.338.327.005      cache-references          #   70,533 M/sec                    (83,33%)
+    23.464.423.540      cache-misses              #   59,648 % of all cache refs      (83,34%)
+ 2.223.478.736.006      cycles                    #    3,987 GHz                      (66,66%)
+ 3.381.722.237.526      instructions              #    1,52  insn per cycle           (83,33%)
+
+      54,100915012 seconds time elapsed
+
+     557,064488000 seconds user
+       0,691518000 seconds sys
+
+
+
+ Performance counter stats for './fdtd_par -d large -t 16':
+
+        556.466,77 msec cpu-clock                 #   10,250 CPUs utilized          
+        556.468,81 msec task-clock                #   10,250 CPUs utilized          
+            15.317      context-switches          #   27,525 /sec                   
+             2.953      cpu-migrations            #    5,307 /sec                   
+           622.903      page-faults               #    1,119 K/sec                  
+    51.099.266.863      branches                  #   91,828 M/sec                    (83,34%)
+        23.102.248      branch-misses             #    0,05% of all branches          (83,33%)
+    39.371.953.803      cache-references          #   70,753 M/sec                    (83,35%)
+    23.468.244.388      cache-misses              #   59,607 % of all cache refs      (83,32%)
+ 2.218.607.850.227      cycles                    #    3,987 GHz                      (66,66%)
+ 3.382.404.978.127      instructions              #    1,52  insn per cycle           (83,33%)
+
+      54,290372990 seconds time elapsed
+
+     555,745379000 seconds user
+       0,752115000 seconds sys
+
+
+
+ Performance counter stats for './fdtd_par -d large -t 16':
+
+        557.769,97 msec cpu-clock                 #   10,267 CPUs utilized          
+        557.771,92 msec task-clock                #   10,268 CPUs utilized          
+            15.402      context-switches          #   27,613 /sec                   
+             3.015      cpu-migrations            #    5,405 /sec                   
+           622.893      page-faults               #    1,117 K/sec                  
+    51.104.670.713      branches                  #   91,623 M/sec                    (83,33%)
+        23.048.580      branch-misses             #    0,05% of all branches          (83,34%)
+    39.343.906.710      cache-references          #   70,538 M/sec                    (83,32%)
+    23.472.933.429      cache-misses              #   59,661 % of all cache refs      (83,33%)
+ 2.223.758.172.639      cycles                    #    3,987 GHz                      (66,68%)
+ 3.383.053.488.089      instructions              #    1,52  insn per cycle           (83,35%)
+
+      54,323931182 seconds time elapsed
+
+     557,101615000 seconds user
+       0,699615000 seconds sys
+
+
+
+ Performance counter stats for './fdtd_par -d large -t 16':
+
+        557.317,57 msec cpu-clock                 #   10,262 CPUs utilized          
+        557.319,43 msec task-clock                #   10,262 CPUs utilized          
+            15.307      context-switches          #   27,465 /sec                   
+             3.061      cpu-migrations            #    5,492 /sec                   
+           622.890      page-faults               #    1,118 K/sec                  
+    51.116.834.256      branches                  #   91,719 M/sec                    (83,35%)
+        23.126.658      branch-misses             #    0,05% of all branches          (83,34%)
+    39.327.270.063      cache-references          #   70,565 M/sec                    (83,32%)
+    23.467.983.117      cache-misses              #   59,674 % of all cache refs      (83,33%)
+ 2.221.947.275.896      cycles                    #    3,987 GHz                      (66,66%)
+ 3.382.556.801.384      instructions              #    1,52  insn per cycle           (83,34%)
+
+      54,307276450 seconds time elapsed
+
+     556,699728000 seconds user
+       0,647822000 seconds sys
+
+
+
+ Performance counter stats for './fdtd_par -d large -t 16':
+
+        557.147,24 msec cpu-clock                 #   10,237 CPUs utilized          
+        557.148,96 msec task-clock                #   10,237 CPUs utilized          
+            15.332      context-switches          #   27,519 /sec                   
+             3.051      cpu-migrations            #    5,476 /sec                   
+           622.893      page-faults               #    1,118 K/sec                  
+    51.119.287.526      branches                  #   91,752 M/sec                    (83,33%)
+        23.054.978      branch-misses             #    0,05% of all branches          (83,33%)
+    39.344.583.531      cache-references          #   70,618 M/sec                    (83,34%)
+    23.476.958.082      cache-misses              #   59,670 % of all cache refs      (83,34%)
+ 2.221.467.019.968      cycles                    #    3,987 GHz                      (66,66%)
+ 3.382.349.752.857      instructions              #    1,52  insn per cycle           (83,33%)
+
+      54,425989883 seconds time elapsed
+
+     556,479690000 seconds user
+       0,696094000 seconds sys
+
+
+
+ Performance counter stats for './fdtd_par -d small':
+
+              0,20 msec cpu-clock                 #    0,512 CPUs utilized          
+              0,20 msec task-clock                #    0,513 CPUs utilized          
+                 0      context-switches          #    0,000 /sec                   
+                 0      cpu-migrations            #    0,000 /sec                   
+                59      page-faults               #  301,633 K/sec                  
+           159.448      branches                  #  815,165 M/sec                  
+             5.432      branch-misses             #    3,41% of all branches        
+            50.124      cache-references          #  256,255 M/sec                  
+             4.814      cache-misses              #    9,604 % of all cache refs    
+     <not counted>      cycles                                                        (0,00%)
+     <not counted>      instructions                                                  (0,00%)
+
+       0,000381687 seconds time elapsed
+
+       0,000446000 seconds user
+       0,000000000 seconds sys
+
+
+Some events weren't counted. Try disabling the NMI watchdog:
+	echo 0 > /proc/sys/kernel/nmi_watchdog
+	perf stat ...
+	echo 1 > /proc/sys/kernel/nmi_watchdog
+Executando 0 do arquivo fdtd_par com 2 threads e tamanho small
+Tempo de execução: 67.47807
+Executando 1 do arquivo fdtd_par com 2 threads e tamanho small
+Tempo de execução: 66.10487
+Executando 2 do arquivo fdtd_par com 2 threads e tamanho small
+Tempo de execução: 66.28757
+Executando 3 do arquivo fdtd_par com 2 threads e tamanho small
+Tempo de execução: 66.43191
+Executando 4 do arquivo fdtd_par com 2 threads e tamanho small
+Tempo de execução: 66.48818
+Executando 0 do arquivo fdtd_par com 4 threads e tamanho small
+Tempo de execução: 34.76966
+Executando 1 do arquivo fdtd_par com 4 threads e tamanho small
+Tempo de execução: 34.68699
+Executando 2 do arquivo fdtd_par com 4 threads e tamanho small
+Tempo de execução: 34.57069
+Executando 3 do arquivo fdtd_par com 4 threads e tamanho small
+Tempo de execução: 34.95220
+Executando 4 do arquivo fdtd_par com 4 threads e tamanho small
+Tempo de execução: 34.84285
+Executando 0 do arquivo fdtd_par com 8 threads e tamanho small
+Tempo de execução: 31.26580
+Executando 1 do arquivo fdtd_par com 8 threads e tamanho small
+Tempo de execução: 30.75090
+Executando 2 do arquivo fdtd_par com 8 threads e tamanho small
+Tempo de execução: 31.06808
+Executando 3 do arquivo fdtd_par com 8 threads e tamanho small
+Tempo de execução: 31.00609
+Executando 4 do arquivo fdtd_par com 8 threads e tamanho small
+Tempo de execução: 31.39373
+Executando 0 do arquivo fdtd_par com 16 threads e tamanho small
+Tempo de execução: 26.71629
+Executando 1 do arquivo fdtd_par com 16 threads e tamanho small
+Tempo de execução: 26.72007
+Executando 2 do arquivo fdtd_par com 16 threads e tamanho small
+Tempo de execução: 26.72617
+Executando 3 do arquivo fdtd_par com 16 threads e tamanho small
+Tempo de execução: 26.73918
+Executando 4 do arquivo fdtd_par com 16 threads e tamanho small
+Tempo de execução: 26.84302
+Executando 0 do arquivo fdtd_par com 2 threads e tamanho medium
+Tempo de execução: 99.70299
+Executando 1 do arquivo fdtd_par com 2 threads e tamanho medium
+Tempo de execução: 99.57357
+Executando 2 do arquivo fdtd_par com 2 threads e tamanho medium
+Tempo de execução: 99.29705
+Executando 3 do arquivo fdtd_par com 2 threads e tamanho medium
+Tempo de execução: 99.59390
+Executando 4 do arquivo fdtd_par com 2 threads e tamanho medium
+Tempo de execução: 98.05650
+Executando 0 do arquivo fdtd_par com 4 threads e tamanho medium
+Tempo de execução: 52.08261
+Executando 1 do arquivo fdtd_par com 4 threads e tamanho medium
+Tempo de execução: 52.04898
+Executando 2 do arquivo fdtd_par com 4 threads e tamanho medium
+Tempo de execução: 52.04832
+Executando 3 do arquivo fdtd_par com 4 threads e tamanho medium
+Tempo de execução: 52.16857
+Executando 4 do arquivo fdtd_par com 4 threads e tamanho medium
+Tempo de execução: 52.06178
+Executando 0 do arquivo fdtd_par com 8 threads e tamanho medium
+Tempo de execução: 46.75313
+Executando 1 do arquivo fdtd_par com 8 threads e tamanho medium
+Tempo de execução: 46.29763
+Executando 2 do arquivo fdtd_par com 8 threads e tamanho medium
+Tempo de execução: 46.92521
+Executando 3 do arquivo fdtd_par com 8 threads e tamanho medium
+Tempo de execução: 46.84300
+Executando 4 do arquivo fdtd_par com 8 threads e tamanho medium
+Tempo de execução: 47.26715
+Executando 0 do arquivo fdtd_par com 16 threads e tamanho medium
+Tempo de execução: 40.07113
+Executando 1 do arquivo fdtd_par com 16 threads e tamanho medium
+Tempo de execução: 40.11941
+Executando 2 do arquivo fdtd_par com 16 threads e tamanho medium
+Tempo de execução: 40.06831
+Executando 3 do arquivo fdtd_par com 16 threads e tamanho medium
+Tempo de execução: 40.21785
+Executando 4 do arquivo fdtd_par com 16 threads e tamanho medium
+Tempo de execução: 40.10783
+Executando 0 do arquivo fdtd_par com 2 threads e tamanho large
+Tempo de execução: 133.66749
+Executando 1 do arquivo fdtd_par com 2 threads e tamanho large
+Tempo de execução: 130.85029
+Executando 2 do arquivo fdtd_par com 2 threads e tamanho large
+Tempo de execução: 131.80932
+Executando 3 do arquivo fdtd_par com 2 threads e tamanho large
+Tempo de execução: 131.19298
+Executando 4 do arquivo fdtd_par com 2 threads e tamanho large
+Tempo de execução: 131.10622
+Executando 0 do arquivo fdtd_par com 4 threads e tamanho large
+Tempo de execução: 68.96862
+Executando 1 do arquivo fdtd_par com 4 threads e tamanho large
+Tempo de execução: 69.02786
+Executando 2 do arquivo fdtd_par com 4 threads e tamanho large
+Tempo de execução: 69.02176
+Executando 3 do arquivo fdtd_par com 4 threads e tamanho large
+Tempo de execução: 68.74457
+Executando 4 do arquivo fdtd_par com 4 threads e tamanho large
+Tempo de execução: 69.16085
+Executando 0 do arquivo fdtd_par com 8 threads e tamanho large
+Tempo de execução: 62.08269
+Executando 1 do arquivo fdtd_par com 8 threads e tamanho large
+Tempo de execução: 61.87835
+Executando 2 do arquivo fdtd_par com 8 threads e tamanho large
+Tempo de execução: 62.88037
+Executando 3 do arquivo fdtd_par com 8 threads e tamanho large
+Tempo de execução: 62.08173
+Executando 4 do arquivo fdtd_par com 8 threads e tamanho large
+Tempo de execução: 60.67559
+Executando 0 do arquivo fdtd_par com 16 threads e tamanho large
+Tempo de execução: 53.06923
+Executando 1 do arquivo fdtd_par com 16 threads e tamanho large
+Tempo de execução: 53.25353
+Executando 2 do arquivo fdtd_par com 16 threads e tamanho large
+Tempo de execução: 53.29210
+Executando 3 do arquivo fdtd_par com 16 threads e tamanho large
+Tempo de execução: 53.27817
+Executando 4 do arquivo fdtd_par com 16 threads e tamanho large
+Tempo de execução: 53.39192
+Executando 0 do arquivo fdtd_seq com tamanho small
+Traceback (most recent call last):
+  File "/home/felipe/Área de Trabalho/Faculdade/2023/Programacao Concorrente/2D-FDTD/auto_benchmark.py", line 180, in <module>
+    main()
+  File "/home/felipe/Área de Trabalho/Faculdade/2023/Programacao Concorrente/2D-FDTD/auto_benchmark.py", line 155, in main
+    seq_times, par_times, mpi_times = benchmark(sys.argv)
+  File "/home/felipe/Área de Trabalho/Faculdade/2023/Programacao Concorrente/2D-FDTD/auto_benchmark.py", line 127, in benchmark
+    tmp = float(subprocess.check_output(cmd, shell=True))
+ValueError: could not convert string to float: b'Invalid arguments\n'

@@ -62,21 +62,24 @@ mpi_sum = 0
 hard_coded_seq = [7.04, 14.10, 21.30]
 
 def show_speedup(argv):
-    if "-h" in argv or "-seq" not in argv:
+    if "-h" in argv:
         if hard_coded_seq == []:
             print("Faltando tempo sequencial")
             return 1
+        print("Usando tempo sequencial guardado")
         seq = hard_coded_seq
+    else:
+        seq = seq_times
     
     if "-p" in argv:
         for i, s in enumerate(seq):
             for j, t in enumerate(number_of_threads):
-                print(f"Speedup Paralelo para -d {data_size[i]}\t -t {t}\t = {s/par_times[i][j]:.2f}")
+                print(f"Speedup Paralelo para -d {data_size[i]}\t -t {t}\t = {s:.2f}/{par_times[i][j]:.2f} = {s/par_times[i][j]:.2f}")
 
     if "-m" in argv:
         for i, s in enumerate(seq):
             for j, t in enumerate(number_of_clusters):
-                print(f"Speedup MPI para -d {data_size[i]}\t -t {t}\t = {s/mpi_times[i][j]:.2f}")
+                print(f"Speedup MPI para -d {data_size[i]}\t -t {t}\t = {s}/{mpi_times[i][j]} = {s/mpi_times[i][j]:.2f}")
 
     print("\n")
     print("Tempos sequencial")
@@ -121,7 +124,7 @@ def benchmark(argv):
             for i in range(number_of_exec):
                 print(f"Executando {i} do arquivo {exec_names[1]} com tamanho {size}")
 
-                cmd = "./fdtd_par -d " + size
+                cmd = "./fdtd_seq -d " + size
                 if "-perf" in argv:
                         cmd = perf_prefix + cmd
                 tmp = float(subprocess.check_output(cmd, shell=True))
