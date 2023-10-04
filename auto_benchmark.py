@@ -46,6 +46,9 @@ data_size = ["small", "medium", "large"]
 # perf stat -e cpu-clock,task-clock,context-switches,cpu-migrations,page-faults,branches,branch-misses,cache-references,cache-misses,cycles,instructions ->COMMAND<-             
 available_args = ["-p", "-s", "-m", "-h", "-e", "-perf"]
 
+perf_prefix = "perf stat -e cpu-clock,task-clock,context-switches,cpu-migrations,page-faults,branches,branch-misses,cache-references,cache-misses,cycles,instructions "
+
+
 par_times = []
 seq_times = []
 mpi_times = []
@@ -101,7 +104,12 @@ def benchmark(argv):
                 par_sum = 0
                 for i in range(number_of_exec):
                     print(f"Executando {i} do arquivo {exec_names[0]} com {num_threads} threads e tamanho {size}")
-                    tmp= float(subprocess.check_output(["./" + exec_names[0] + " -d " + size + " -t " + str(num_threads)], shell=True))
+                    
+                    cmd = "./fdtd_par -d " + size + " -t " + str(num_threads)
+                    if "-perf" in argv:
+                        cmd = perf_prefix + cmd
+                    tmp = float(subprocess.check_output(cmd, shell=True))
+                    
                     par_sum += tmp
                     print(f"Tempo de execução: {tmp:.5f}")
                 line.append(par_sum/number_of_exec)
@@ -112,7 +120,12 @@ def benchmark(argv):
             seq_sum = 0
             for i in range(number_of_exec):
                 print(f"Executando {i} do arquivo {exec_names[1]} com tamanho {size}")
-                tmp= float(subprocess.check_output(["./" + exec_names[1] + " -d " + size], shell=True))
+
+                cmd = "./fdtd_par -d " + size
+                if "-perf" in argv:
+                        cmd = perf_prefix + cmd
+                tmp = float(subprocess.check_output(cmd, shell=True))
+
                 seq_sum += tmp
                 print(f"Tempo de execução: {tmp:.5f}")
             seq_times.append(seq_sum/number_of_exec)
@@ -124,7 +137,12 @@ def benchmark(argv):
                 mpi_sum = 0
                 for i in range(number_of_exec):
                     print(f"Executando {i} do arquivo {exec_names[2]} com {prcss} threads e tamanho {size}")
-                    tmp= float(subprocess.check_output([f"mpirun -np {prcss} {exec_names[2]} -d {size}"], shell=True))
+                    
+                    cmd = "mpirun -np " + str(prcss) + " ./fdtd_mpi -d " + size
+                    if "-perf" in argv:
+                        cmd = perf_prefix + cmd
+                    tmp = float(subprocess.check_output(cmd, shell=True))
+
                     mpi_sum += tmp
                     print(f"Tempo de execução: {tmp:.5f}")
                 line.append(mpi_sum/number_of_exec)
@@ -132,45 +150,8 @@ def benchmark(argv):
 
     return seq_times, par_times, mpi_times
 
-def benchmark_perf(argv):
-    if "-e" in argv:
-        pos = argv.index("-e")
-        if len(argv) <= pos:
-            print("Faltando numero de execucoes")
-            return 1
-        number_of_exec = int(argv[pos+1])
-    else:
-        number_of_exec = default_exec
-
-
-    if "-p" in argv:
-        for size in data_size:
-            for num_threads in number_of_threads:
-                for i in range(number_of_exec):
-                    print(f"Executando {i} do arquivo {exec_names[0]} com {num_threads} threads e tamanho {size}")
-                    command = "perf stat -e cpu-clock,task-clock,context-switches,cpu-migrations,page-faults,branches,branch-misses,cache-references,cache-misses,cycles,instructions ./fdtd_par -d " + size + " -t " + str(num_threads)
-                    subprocess.call(command, shell=True)
-
-    if "-s" in argv:
-        for size in data_size:
-            for i in range(number_of_exec):
-                print(f"Executando {i} do arquivo {exec_names[1]} com tamanho {size}")
-                command = "perf stat -e cpu-clock,task-clock,context-switches,cpu-migrations,page-faults,branches,branch-misses,cache-references,cache-misses,cycles,instructions ./fdtd_par -d " + size 
-                subprocess.call(command, shell=True)
-    
-    if "-m" in argv:
-        for size in data_size:
-            for prcss in number_of_clusters:
-                for i in range(number_of_exec):
-                    print(f"Executando {i} do arquivo {exec_names[2]} com {prcss} threads e tamanho {size}")
-                    command = "perf stat -e cpu-clock,task-clock,context-switches,cpu-migrations,page-faults,branches,branch-misses,cache-references,cache-misses,cycles,instructions mpirun -np " + str(prcss) + " ./fdtd_mpi -d " + size
-                    subprocess.call(command, shell=True)
-    return 0
 def main():
 
-    if "-perf" in sys.argv:
-        benchmark_perf(sys.argv)
-        return 0
     seq_times, par_times, mpi_times = benchmark(sys.argv)
 
     print("\n")
