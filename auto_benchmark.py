@@ -24,6 +24,14 @@ import sys
 # A ordem ou sequencia de parametros passados nao importa, tirando
 # a excecao do -e, que deve ser seguido de um numero inteiro.
 
+# Para a execução com perf, basta adicionar o parametro -perf
+# Com isso o perf irá printar muita coisa na tela, entao é recomendado
+# redirecionar a saida para um arquivo, como por exemplo:
+# python3 auto_benchmark.py -p -s -m -perf &> benchmark.txt
+# o comando que redireciona é p '&>' , para o arquivo 'benchmark.txt'
+# ou apos o termino, copie tudo que foi printado na tela para um arquivo
+# recomendado roda com 5 execucoes, acredito que demora cerca de 4hrs
+
 
 # default values
 exec_names = ["fdtd_par", "fdtd_seq", "fdtd_mpi"]
