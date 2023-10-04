@@ -72,15 +72,15 @@ int main(int argc, char** argv) {
       // <DATASET> 
       if (!strcmp(argv[1],"-d")){
         if (!strcmp(argv[2],"small")){
-          TMAX = 5;
+          TMAX = 120;
           NX = 10240;
           NY = 10240;
         } else if (!strcmp(argv[2],"medium")){
-          TMAX = 10;
+          TMAX = 240;
           NX = 10240; 
           NY = 10240;
         } else if (!strcmp(argv[2],"large")){
-          TMAX = 15;
+          TMAX = 360;
           NX = 10240;
           NY = 10240;
         } else {
